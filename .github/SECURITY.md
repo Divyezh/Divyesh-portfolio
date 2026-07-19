@@ -1,0 +1,8 @@
+# Security Policy
+## Supported Versions
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.x.x   | :white_check_mark: |
+
+## Reporting a Vulnerability
+Please do not report security vulnerabilities through public GitHub issues. Instead, report them via email.
