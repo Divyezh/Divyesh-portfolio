@@ -13,6 +13,9 @@
     ·
     <a href="https://github.com/Divyezh/Divyesh-portfolio/issues">Request Feature</a>
   </p>
+  
+  <br />
+  <img src="public/hero.png" alt="Hero Section" width="100%" style="border-radius: 10px; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);" />
 </div>
 
 <!-- BADGES -->
