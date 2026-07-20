@@ -24,8 +24,8 @@ export function usePreloader(onComplete: () => void) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [counter, setCounter] = useState(0)
   const [phase, setPhase] = useState<'cycling' | 'exiting' | 'done'>('cycling')
-  const wordTimerRef = useRef<NodeJS.Timeout>()
-  const counterRef = useRef<NodeJS.Timeout>()
+  const wordTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const counterRef = useRef<NodeJS.Timeout | null>(null)
 
   // ── Word cycling ──────────────────────────────────────
   useEffect(() => {
