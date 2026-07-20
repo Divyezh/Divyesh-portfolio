@@ -1,7 +1,7 @@
 'use client'
 import { motion } from "framer-motion"
 import { slideInFromLeft, slideInFromRight } from "@/lib/motion"
-import ProjectCard from "../sub/project-card"
+import FeaturedCarousel from "../sub/featured-carousel"
 import { Projects } from "@/constants"
 import { HiSparkles } from "react-icons/hi"
 
@@ -29,11 +29,9 @@ export default function ProjectsSection() {
         </motion.h2>
       </div>
 
-      {/* PROJECTS GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {Projects.map((project, i) => (
-          <ProjectCard key={project.title} {...project} />
-        ))}
+      {/* PROJECTS CAROUSEL */}
+      <div className="w-full">
+        <FeaturedCarousel projects={Projects} />
       </div>
     </section>
   )

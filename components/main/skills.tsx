@@ -1,5 +1,4 @@
 'use client'
-import { motion } from "framer-motion"
 import SkillDataProvider from "../sub/skill-data-provider"
 import SkillText from "../sub/skill-text"
 import { Frontend_skill, Backend_skill, AI_skill, Full_stack } from "@/constants"

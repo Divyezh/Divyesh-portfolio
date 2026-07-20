@@ -1,0 +1,71 @@
+/* components/preloader/preloader.css */
+
+/* ── PANEL WIPE EXIT ───────────────────────────────────── */
+/*
+  The exit uses TWO panels stacked vertically.
+  Each panel clips to reveal the site underneath.
+  The clip path has a curved bottom edge — a bezier arc
+  that makes the wipe feel organic, not mechanical.
+*/
+
+@keyframes panel-wipe-up {
+  0%   { transform: translateY(0%); }
+  100% { transform: translateY(-102%); }
+}
+
+@keyframes panel-wipe-up-delayed {
+  0%   { transform: translateY(0%); }
+  100% { transform: translateY(-102%); }
+}
+
+.preloader-panel-1 {
+  animation: panel-wipe-up 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0s;
+}
+
+.preloader-panel-2 {
+  animation: panel-wipe-up-delayed 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0.12s;
+}
+
+/* ── CURVED BOTTOM EDGE on panels ──────────────────────── */
+/*
+  Each panel has a pseudo-element at the bottom
+  that creates a curved arc — the signature Skiper8 look.
+  This is an SVG wave shape that masks the straight edge.
+*/
+.preloader-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: inherit;
+  clip-path: ellipse(55% 100% at 50% 0%);
+  /* Creates a downward bulge at the bottom of each panel */
+}
+
+/* ── WORD TRANSITION ────────────────────────────────────── */
+/*
+  The curved motion for words is handled via Framer Motion
+  custom variants (see WordsPreloader.tsx).
+  These CSS rules handle the base word typography.
+*/
+.preloader-word {
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── COUNTER ─────────────────────────────────────────────── */
+.preloader-counter {
+  position: fixed;
+  bottom: 32px;
+  right: 40px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  z-index: 10001;
+  letter-spacing: 0.05em;
+}
