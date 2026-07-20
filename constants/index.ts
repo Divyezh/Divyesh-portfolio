@@ -1,7 +1,7 @@
 // ─── SOCIALS ──────────────────────────────────────────────
 export const Socials = [
   { name: "GitHub", src: "/assets/github-icon.svg", href: "https://github.com/Divyezh" },
-  { name: "LinkedIn", src: "/assets/linkedin-app-icon.svg", href: "https://linkedin.com/in/divyyesh-60a5bb2a6" },
+  { name: "LinkedIn", src: "/assets/linkedin-app-icon.svg", href: "https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/" },
   { name: "Email", src: "/assets/google-gmail-svgrepo-com.svg", href: "mailto:sonidivyesh2004@gmail.com" },
 ];
 

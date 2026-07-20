@@ -23,6 +23,27 @@ const config: Config = {
         "purple-radial":
           "radial-gradient(ellipse at center, rgba(139,92,246,0.15) 0%, transparent 70%)",
       },
+      keyframes: {
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+        "gradient-x": {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 1.5s infinite",
+        "gradient-x": "gradient-x 3s ease infinite",
+      },
     },
   },
   plugins: [],
