@@ -9,6 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        border: "rgba(255, 255, 255, 0.15)",
+        background: "#060611",
         purple: {
           light:  "#d8b4fe",
           mid:    "#a855f7",
@@ -16,6 +18,16 @@ const config: Config = {
           deep:   "#581c87",
           glow:   "rgba(139, 92, 246, 0.15)",
         },
+      },
+      spacing: {
+        '75': '18.75rem',
+        '110': '27.5rem',
+        '145': '36.25rem',
+        '150': '37.5rem',
+        '160': '40rem',
+        '180': '45rem',
+        '220': '55rem',
+        '265': '66.25rem',
       },
       backgroundImage: {
         "purple-gradient":

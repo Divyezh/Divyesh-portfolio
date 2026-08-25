@@ -1,9 +1,15 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import ClientRoot from "@/components/ClientRoot"
 
 const inter = Inter({ subsets: ["latin"] })
+
+export const viewport: Viewport = {
+  themeColor: "#06060c",
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: "Divyesh Soni | Full Stack Software Engineer & AI Developer",
@@ -29,14 +35,6 @@ export const metadata: Metadata = {
     description: "Full Stack Software Engineer with experience in Website, Mobile, and Software development. Check out my projects and skills.",
     url: "https://github.com/Divyezh/Divyesh-portfolio",
     siteName: "Divyesh Soni Portfolio",
-    images: [
-      {
-        url: "/hero.png",
-        width: 1200,
-        height: 630,
-        alt: "Divyesh Soni - Full Stack Developer",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -44,7 +42,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Divyesh Soni | Full Stack Developer",
     description: "Full Stack Software Engineer with experience in Website, Mobile, and Software development. Check out my projects and skills.",
-    images: ["/hero.png"],
   },
   robots: {
     index: true,
@@ -57,15 +54,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  themeColor: "#030014",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#030014] overflow-x-hidden`}>
+      <body className={`${inter.className} bg-[#06060c] overflow-x-hidden`}>
         <ClientRoot>{children}</ClientRoot>
       </body>
     </html>
   )
 }
+

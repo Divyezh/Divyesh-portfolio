@@ -1,62 +1,91 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: #06060c;
+  --surface: #0c0d16;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --accent: #8b5cf6;
+  --accent-cyan: #38bdf8;
+}
+
+body {
+  background-color: var(--background);
+  color: #f1f5f9;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
 
 .cursive {
   font-family: "Cedarville Cursive", cursive;
 }
 
-/* AMBER gradient text — replaces the purple .Welcome-text */
-.Welcome-text {
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.4)
-  ),
-  linear-gradient(90.01deg, #ffdd88 0.01%, #e8821a 50.01%, #ff6600 100%);
-  background-blend-mode: normal, screen;
+/* Glassmorphism Cards with 1px Highlight Refraction */
+.glass-card {
+  background: rgba(12, 13, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 12px 40px -10px rgba(139, 92, 246, 0.2);
+}
+
+/* Modern Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* AMBER glass pill — replaces purple .Welcome-box */
+.gradient-accent-text {
+  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Legacy Welcome box & text for compatibility */
+.Welcome-text {
+  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .Welcome-box {
   isolation: isolate;
   overflow: hidden;
   align-items: center;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-radius: 32px;
-  box-shadow: inset 0 -7px 11px rgba(232, 130, 26, 0.12);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 9999px;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  background: rgba(139, 92, 246, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: flex;
   position: relative;
   width: max-content;
-  transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow;
+  transition: 0.3s ease;
 }
 
-/* AMBER glass button — replaces purple .button-primary */
-.button-primary {
-  background: linear-gradient(
-    180deg,
-    rgba(120, 50, 0, 0) 0%,
-    rgba(120, 50, 0, 0.32) 100%
-  ),
-  rgba(232, 130, 26, 0.12);
-  box-shadow: inset 0 0 12px rgba(255, 170, 68, 0.24);
-}
-.button-primary:hover {
-  background: linear-gradient(
-    180deg,
-    rgba(120, 50, 0, 0) 0%,
-    rgba(120, 50, 0, 0.42) 100%
-  ),
-  rgba(232, 130, 26, 0.24);
-  box-shadow: inset 0 0 12px rgba(255, 170, 68, 0.44);
+/* Spotlight Card Background */
+.spotlight-border {
+  position: relative;
+  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(139, 92, 246, 0.12), transparent 40%);
 }
 
-/* Amber star glow — used in StarBackground */
+/* Star and glow utilities */
 .star-amber {
   background: radial-gradient(circle, #ffaa44 0%, transparent 70%);
 }
@@ -69,11 +98,26 @@
   display: none;
 }
 
+/* Sleek Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #06060c;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.4);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Skill icon marquee — matches the auto-scrolling row from repo */
+/* Skill icon marquee */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -85,3 +129,4 @@ html {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+

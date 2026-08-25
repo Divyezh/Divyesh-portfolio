@@ -1,42 +1,47 @@
 'use client'
 import { motion } from "framer-motion"
-import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/lib/motion"
-import { HiSparkles } from "react-icons/hi"
+import { Sparkles } from "lucide-react"
 
 export default function SkillText() {
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center text-center">
+    <div className="w-full flex flex-col items-center justify-center text-center mb-8">
       <motion.div
-        variants={slideInFromTop}
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0, y: -10 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="Welcome-box py-2 px-4 border border-purple-core/20 mb-6"
+        transition={{ duration: 0.4 }}
+        className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-purple-500/25 bg-purple-500/10 mb-4"
       >
-        <HiSparkles className="text-purple-mid mr-2" />
-        <span className="Welcome-text text-sm font-medium">Think better with Next.js 14</span>
+        <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+        <span className="text-purple-300 text-xs font-mono font-medium uppercase tracking-wider">
+          Technical Arsenal
+        </span>
       </motion.div>
 
-      <motion.h1
-        variants={slideInFromLeft(0.5)}
-        initial="hidden"
-        whileInView="visible"
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold text-white mb-4 mt-6"
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
       >
-        Making apps with modern technologies.
-      </motion.h1>
+        Engineered for{" "}
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-sky-400">
+          Scale &amp; Precision
+        </span>
+      </motion.h2>
 
       <motion.p
-        variants={slideInFromRight(0.5)}
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-gray-400 text-lg md:text-xl max-w-xl px-4 italic font-serif mt-2"
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-slate-400 text-sm sm:text-base max-w-xl px-4 mt-3"
       >
-        Never miss a task, deadline or idea.
+        Full-stack architecture, high-throughput backend services, modern reactive user interfaces, and generative AI pipelines.
       </motion.p>
     </div>
   )
 }
+
 

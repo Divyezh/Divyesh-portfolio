@@ -1,68 +1,138 @@
 'use client'
-import SkillDataProvider from "../sub/skill-data-provider"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
+import Image from "next/image"
 import SkillText from "../sub/skill-text"
 import { Frontend_skill, Backend_skill, AI_skill, Full_stack } from "@/constants"
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/ui/scroll-based-velocity"
+import { Code2, Database, BrainCircuit, Wrench } from "lucide-react"
 
-// Combine all skills and deduplicate by skill name
-const allSkills = [...Frontend_skill, ...Backend_skill, ...Full_stack, ...AI_skill]
-const uniqueSkills = allSkills.filter((v, i, a) => a.findIndex(t => (t.skill_name === v.skill_name)) === i)
-
-// Create V-shape rows (lengths: 7, 6, 5, 4, 2)
-const rows = [
-  uniqueSkills.slice(0, 7),
-  uniqueSkills.slice(7, 13),
-  uniqueSkills.slice(13, 18),
-  uniqueSkills.slice(18, 22),
-  uniqueSkills.slice(22, 24)
+const skillCategories = [
+  {
+    title: "Frontend Engineering",
+    icon: Code2,
+    color: "from-blue-500/20 to-purple-500/20",
+    borderColor: "border-blue-500/30",
+    skills: Frontend_skill,
+  },
+  {
+    title: "Backend & Databases",
+    icon: Database,
+    color: "from-purple-500/20 to-indigo-500/20",
+    borderColor: "border-purple-500/30",
+    skills: Backend_skill,
+  },
+  {
+    title: "AI & LLM Integration",
+    icon: BrainCircuit,
+    color: "from-indigo-500/20 to-cyan-500/20",
+    borderColor: "border-indigo-500/30",
+    skills: AI_skill,
+  },
+  {
+    title: "DevOps & Cloud Workflow",
+    icon: Wrench,
+    color: "from-cyan-500/20 to-emerald-500/20",
+    borderColor: "border-cyan-500/30",
+    skills: Full_stack,
+  },
 ]
 
 export default function Skills() {
-  let globalIndex = 0; // To keep staggered animation cascading properly
-
   return (
     <section
       id="skills"
-      className="relative flex flex-col items-center justify-center pt-20 pb-32 overflow-hidden"
-      style={{ minHeight: '100vh' }}
+      className="relative flex flex-col items-center justify-center pt-24 pb-28 px-4 md:px-8 max-w-7xl mx-auto w-full z-20"
     >
-      {/* SKILLS BG VIDEO */}
-      <video
-        autoPlay muted loop playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10 opacity-20"
-      >
-        <source src="/videos/skills-bg.webm" type="video/webm" />
-      </video>
-
-      {/* PURPLE/CYAN GLOW OVERLAY */}
-      <div className="absolute inset-0 -z-[5] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,92,246,0.1) 0%, transparent 70%)' }}
+      {/* AMBIENT RADIAL GLOW */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none -z-10"
       />
 
       <SkillText />
 
-      {/* SKILL ICONS V-SHAPE GRID */}
-      <div className="flex flex-col items-center justify-center gap-6 md:gap-8 mt-16 z-20">
-        {rows.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="flex flex-row justify-center items-center gap-4 md:gap-8"
-          >
-            {row.map((skill) => {
-              const currentIndex = globalIndex++;
-              return (
-                <SkillDataProvider
-                  key={skill.skill_name}
-                  src={skill.Image} 
-                  width={skill.width}
-                  height={skill.height} 
-                  index={currentIndex} 
-                  name={skill.skill_name}
-                />
-              )
-            })}
-          </div>
-        ))}
+      {/* VELOCITY SCROLL BANNER */}
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden my-10 py-3 glass-card border-y border-white/[0.08]">
+        <ScrollVelocityContainer className="text-xl md:text-3xl font-extrabold tracking-tight">
+          <ScrollVelocityRow baseVelocity={18} direction={1}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-sky-300 to-indigo-400 px-4">
+              Next.js 14 • React.js • TypeScript • Tailwind CSS • Node.js • PostgreSQL • Prisma ORM • Claude API • OpenAI •
+            </span>
+          </ScrollVelocityRow>
+          <ScrollVelocityRow baseVelocity={18} direction={-1}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-purple-300 to-indigo-300 px-4">
+              High Scalability • Clean Architecture • Micro-Interactions • Type-Safe APIs • Production Speed •
+            </span>
+          </ScrollVelocityRow>
+        </ScrollVelocityContainer>
+        <div className="from-[#06060c] pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r" />
+        <div className="from-[#06060c] pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l" />
+      </div>
+
+      {/* CATEGORIZED BENTO GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
+        {skillCategories.map((category, index) => {
+          const Icon = category.icon
+          return (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative p-6 sm:p-7 rounded-3xl glass-card border border-white/[0.08] hover:border-purple-500/30 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+            >
+              {/* Category Header */}
+              <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-purple-400">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white tracking-tight">
+                    {category.title}
+                  </h3>
+                </div>
+                <span className="text-xs font-mono text-slate-500">
+                  {category.skills.length} Tools
+                </span>
+              </div>
+
+              {/* Skills Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {category.skills.map((skill) => (
+                  <motion.div
+                    key={skill.skill_name}
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    className="flex flex-col items-center justify-center p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.06] hover:border-purple-500/30 transition-all cursor-default text-center group/skill"
+                  >
+                    <div className="relative w-10 h-10 mb-2 flex items-center justify-center">
+                      <Image
+                        src={skill.Image}
+                        alt={skill.skill_name}
+                        width={40}
+                        height={40}
+                        className="object-contain max-h-9 max-w-9 transition-transform group-hover/skill:scale-110"
+                      />
+                    </div>
+                    <span className="text-xs font-medium text-slate-200 line-clamp-1">
+                      {skill.skill_name}
+                    </span>
+                    {skill.level && (
+                      <span className="text-[10px] text-slate-500 font-mono mt-0.5">
+                        {skill.level}
+                      </span>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )
+        })}
       </div>
     </section>
   )
 }
+

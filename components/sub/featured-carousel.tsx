@@ -17,14 +17,7 @@ import "swiper/css";
 
 import { cn } from "@/lib/utils";
 import ProjectCard from "./project-card";
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-  tags: string[];
-}
+import { ProjectItem } from "@/constants";
 
 const FeaturedCarousel = ({
   projects,
@@ -35,7 +28,7 @@ const FeaturedCarousel = ({
   autoplay = true,
   spaceBetween = 30,
 }: {
-  projects: Project[];
+  projects: ProjectItem[];
   className?: string;
   showPagination?: boolean;
   showNavigation?: boolean;
@@ -143,7 +136,7 @@ const FeaturedCarousel = ({
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
-              <ProjectCard {...project} />
+              <ProjectCard project={project} />
             </SwiperSlide>
           ))}
           {showNavigation && (

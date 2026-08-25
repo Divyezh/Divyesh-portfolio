@@ -1,193 +1,141 @@
 'use client'
 import { motion } from "framer-motion"
-import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/lib/motion"
-import { HiSparkles, HiArrowRight, HiDownload } from "react-icons/hi"
-import { MousePointer2 } from "lucide-react"
-import Image from "next/image"
+import { HiArrowRight, HiDownload } from "react-icons/hi"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
+import OrbitingCirclesGlobeDemo from "@/components/ui/orbiting-circles-02"
 
 export default function HeroContent() {
-  const codeString = `const developer = {
-  name: "Divyesh",
-  stack: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "AI"
-  ]
-}`
-
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
-      className="flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-20 mt-32 w-full z-20 max-w-[1400px] mx-auto min-h-[80vh]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="flex flex-col items-center justify-center px-4 md:px-8 lg:px-12 pt-24 pb-8 w-full z-20 max-w-6xl mx-auto text-center"
     >
-      {/* LEFT COLUMN - TEXT & UI */}
-      <div className="w-full flex flex-col gap-6 justify-center text-left max-w-[650px] relative z-20">
-
-        {/* BADGE */}
-        <motion.div
-          variants={slideInFromTop}
-          className="relative inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-md w-max overflow-hidden group cursor-default"
-        >
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-          <HiSparkles className="text-purple-400 mr-2 h-4 w-4" />
-          <span className="text-purple-200 text-xs font-semibold tracking-wide uppercase">
-            Available for Internship
-          </span>
-        </motion.div>
-
-        {/* MAIN HEADLINE */}
-        <motion.div variants={slideInFromLeft(0.4)} className="flex flex-col gap-2 mt-2">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1]">
-            Building
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c084fc] via-[#8b5cf6] to-[#38bdf8] animate-gradient-x">
-              Modern Digital
-            </span>
-            <br />
-            Experiences.
-          </h1>
-        </motion.div>
-
-        {/* SUBTITLE */}
-        <motion.p
-          variants={slideInFromLeft(0.6)}
-          className="text-base md:text-lg text-[#B3B3C6] max-w-[500px] leading-relaxed font-medium"
-        >
-          I build high-performance web applications using Next.js, React, TypeScript and AI, creating premium digital experiences focused on speed, scalability and exceptional UI.
-        </motion.p>
-
-        {/* BUTTONS */}
-        <motion.div
-          variants={slideInFromLeft(0.8)}
-          className="flex flex-wrap items-center gap-4 mt-4"
-        >
-          <a
-            href="#projects"
-            className="group relative inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-300 bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] rounded-full hover:shadow-[0_0_20px_rgba(124,58,237,0.5)] overflow-hidden"
-          >
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative flex items-center gap-2">
-              View Projects
-              <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </a>
-
-          <a
-            href="/DivyeshDEV.pdf"
-            download="Divyesh_Soni_Resume.pdf"
-            target="_blank"
-            className="group inline-flex items-center justify-center px-6 py-3 font-medium text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:bg-white/10 hover:border-white/20"
-          >
-            <span className="flex items-center gap-2">
-              <HiDownload className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-              Download Resume
-            </span>
-          </a>
-        </motion.div>
-
-        {/* STATS */}
-        <motion.div
-          variants={slideInFromLeft(1.0)}
-          className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10 max-w-[500px]"
-        >
-          <div className="flex flex-col gap-1">
-            <span className="text-3xl font-bold text-white">2+</span>
-            <span className="text-xs font-medium text-[#B3B3C6] uppercase tracking-wider">Projects</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-3xl font-bold text-white">4+</span>
-            <span className="text-xs font-medium text-[#B3B3C6] uppercase tracking-wider">Technologies</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-3xl font-bold text-[#38BDF8]">100%</span>
-            <span className="text-xs font-medium text-[#B3B3C6] uppercase tracking-wider">Responsive</span>
-          </div>
-        </motion.div>
-
-
-
-      </div>
-
-      {/* RIGHT COLUMN - GRAPHIC (ORBITAL ANIMATION) */}
+      {/* STATUS PILL */}
       <motion.div
-        variants={slideInFromRight(0.8)}
-        className="w-full h-full flex justify-center items-center mt-32 lg:mt-0 relative min-h-[500px]"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/25 bg-purple-500/10 backdrop-blur-md mb-6 hover:border-purple-500/40 transition-colors shadow-[0_0_15px_rgba(139,92,246,0.15)]"
       >
-        {/* CONCENTRIC CIRCLES (Enhanced Borders) */}
-        <div className="absolute w-[250px] h-[250px] border-[1px] border-purple-500/40 rounded-full flex justify-center items-center">
-          <div className="absolute w-[400px] h-[400px] border-[1px] border-purple-500/40 rounded-full flex justify-center items-center">
-            <div className="absolute w-[550px] h-[550px] border-[1px] border-purple-500/20 rounded-full"></div>
-          </div>
-        </div>
-
-        {/* CROSSHAIR */}
-        <div className="absolute w-[600px] h-[1px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent"></div>
-        <div className="absolute h-[600px] w-[1px] bg-gradient-to-b from-transparent via-purple-500/40 to-transparent"></div>
-
-        {/* FLOATING ICONS LAYER 1 */}
-        <motion.div animate={{ rotate: 360 }} transition={{ duration: 50, repeat: Infinity, ease: "linear" }} className="absolute w-[400px] h-[400px]">
-          <div className="absolute -top-5 left-1/2 -translate-x-1/2 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/react-svgrepo-com.svg" alt="react" width={40} height={40} />
-          </div>
-          <div className="absolute bottom-10 right-4 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/typescript-svgrepo-com.svg" alt="ts" width={40} height={40} />
-          </div>
-          <div className="absolute top-1/2 -left-5 -translate-y-1/2 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/github-icon.svg" alt="github" width={40} height={40} />
-          </div>
-        </motion.div>
-
-        {/* FLOATING ICONS LAYER 2 */}
-        <motion.div animate={{ rotate: -360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute w-[250px] h-[250px]">
-          <div className="absolute top-0 right-2 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/next-js-svgrepo-com.svg" alt="nextjs" width={35} height={35} style={{ filter: 'invert(1)' }} />
-          </div>
-          <div className="absolute bottom-0 left-2 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/javascript-programming-language-icon.svg" alt="js" width={35} height={35} />
-          </div>
-        </motion.div>
-
-        {/* FLOATING ICONS LAYER 3 (OUTER) */}
-        <motion.div animate={{ rotate: 180 }} transition={{ duration: 60, repeat: Infinity, ease: "linear", repeatType: "mirror" }} className="absolute w-[550px] h-[550px]">
-          <div className="absolute bottom-20 left-10 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/html-icon.svg" alt="html" width={30} height={30} />
-          </div>
-          <div className="absolute top-20 right-10 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] backdrop-blur-md bg-white/5 rounded-full p-2 border border-white/20 hover:scale-125 transition-transform duration-300">
-            <Image src="/assets/css-icon.svg" alt="css" width={30} height={30} />
-          </div>
-        </motion.div>
-
-        {/* CENTER ICON WITH GLOW */}
-        <div className="absolute flex justify-center items-center">
-          <div className="absolute w-32 h-32 bg-purple-500/30 blur-2xl rounded-full animate-pulse" />
-          <div className="relative drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] backdrop-blur-xl bg-white/5 rounded-full p-5 border border-purple-500/50 hover:scale-110 transition-transform duration-300">
-            <Image src="/assets/node-js-icon.svg" alt="node" width={65} height={65} />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* SCROLL INDICATOR (Bottom Left) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-6 md:left-12 lg:left-20 flex flex-col items-center gap-2 z-30"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <MousePointer2 className="w-5 h-5 text-gray-400" />
-        </motion.div>
-        <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest" style={{ writingMode: 'vertical-rl' }}>
-          Scroll
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span className="text-purple-200 text-xs font-semibold tracking-wide uppercase font-mono">
+          Available for Full-Time &amp; Internship Roles
         </span>
       </motion.div>
 
+      {/* DISPLAY HEADLINE */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="flex flex-col gap-2 max-w-4xl mx-auto"
+      >
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08]">
+          Crafting{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-sky-400">
+            Intelligent Web Apps
+          </span>{" "}
+          &amp; Scalable Systems.
+        </h1>
+      </motion.div>
+
+      {/* SUBTITLE */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal mt-5 mx-auto"
+      >
+        Hi, I&apos;m <span className="text-white font-semibold">Divyesh Soni</span>. Full-stack software developer &amp; AI builder specializing in Next.js 14, React, TypeScript, and Generative AI applications.
+      </motion.p>
+
+      {/* CTAS */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="flex flex-wrap items-center justify-center gap-3.5 mt-7"
+      >
+        <a
+          href="#projects"
+          className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] active:scale-[0.98]"
+        >
+          <span className="flex items-center gap-2">
+            Explore Selected Projects
+            <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </a>
+
+        <a
+          href="/Divyesh.pdf"
+          download="Divyesh_Soni_Resume.pdf"
+          target="_blank"
+          className="group inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-white transition-all duration-300 glass-card rounded-full hover:bg-white/10 hover:border-white/20 active:scale-[0.98]"
+        >
+          <span className="flex items-center gap-2">
+            <HiDownload className="w-4 h-4 text-purple-400 group-hover:text-white transition-colors" />
+            Resume PDF
+          </span>
+        </a>
+
+        <div className="flex items-center gap-2 pl-1">
+          <a
+            href="https://github.com/Divyezh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full glass-card text-gray-300 hover:text-white hover:border-purple-500/40 transition-all active:scale-95"
+            aria-label="GitHub"
+          >
+            <FaGithub className="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full glass-card text-gray-300 hover:text-white hover:border-purple-500/40 transition-all active:scale-95"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin className="w-4 h-4" />
+          </a>
+        </div>
+      </motion.div>
+
+      {/* ORBITING CIRCLES GLOBE */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.65 }}
+        className="w-full max-w-4xl mt-6 flex justify-center items-center relative z-20"
+      >
+        <OrbitingCirclesGlobeDemo />
+      </motion.div>
+
+      {/* STATS MATRIX */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="grid grid-cols-3 gap-6 sm:gap-12 mt-4 pt-6 border-t border-white/10 max-w-xl w-full mx-auto"
+      >
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">4+</span>
+          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider mt-0.5">Projects</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">15+</span>
+          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider mt-0.5">Technologies</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-extrabold text-sky-400 tracking-tight">100%</span>
+          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider mt-0.5">Responsive</span>
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
+
