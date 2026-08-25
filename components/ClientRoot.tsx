@@ -1,13 +1,10 @@
 // components/ClientRoot.tsx — 'use client' wrapper
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import StarsCanvas from './main/star-background'
 
 export default function ClientRoot({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false)
-
   useEffect(() => {
-    setMounted(true)
     document.body.style.overflow = ''
   }, [])
 
