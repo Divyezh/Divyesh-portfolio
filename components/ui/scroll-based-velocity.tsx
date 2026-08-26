@@ -9,6 +9,7 @@ import {
   useMotionValue,
   useVelocity,
   useAnimationFrame,
+  useInView,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -50,22 +51,28 @@ export function ScrollVelocityRow({
   baseVelocity = 20,
   direction = 1,
   className,
-  numCopies = 6,
+  numCopies = 4,
   ...props
 }: ScrollVelocityRowProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: "100px 0px" });
+
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
+    damping: 70,
+    stiffness: 180,
   });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false,
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
+    clamp: true,
   });
 
   const directionFactor = useRef<number>(direction);
+  
   useAnimationFrame((t, delta) => {
+    if (!isInView) return;
+
     let moveBy = directionFactor.current * (baseVelocity / 5) * (delta / 1000);
 
     if (velocityFactor.get() < 0) {
@@ -75,15 +82,18 @@ export function ScrollVelocityRow({
     }
 
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
     baseX.set(baseX.get() + moveBy);
   });
 
   const x = useTransform(baseX, (v) => `${wrap(-100 / numCopies, 0, v)}%`);
 
   return (
-    <div className={cn("w-full overflow-hidden whitespace-nowrap flex flex-nowrap", className)} {...props}>
-      <motion.div className="flex flex-nowrap whitespace-nowrap" style={{ x }}>
+    <div 
+      ref={containerRef}
+      className={cn("w-full overflow-hidden whitespace-nowrap flex flex-nowrap", className)} 
+      {...props}
+    >
+      <motion.div className="flex flex-nowrap whitespace-nowrap will-change-transform transform-gpu" style={{ x }}>
         {Array.from({ length: numCopies }).map((_, i) => (
           <span key={i} className="flex items-center flex-shrink-0 mx-4">
             {children}

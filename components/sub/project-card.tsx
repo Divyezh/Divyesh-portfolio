@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -18,24 +19,22 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
       whileHover={{ y: -6 }}
       className="group relative flex flex-col h-full rounded-2xl overflow-hidden glass-card glass-card-hover border border-white/[0.08] hover:border-purple-500/40"
     >
-      {/* CARD SPOTLIGHT GLOW */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
 
-      {/* IMAGE PREVIEW CONTAINER */}
       <div className="relative w-full h-52 sm:h-60 overflow-hidden bg-[#090a12] border-b border-white/[0.06]">
         <Image
           src={imageError ? "/projects/portfolio.png" : project.image}
           alt={project.title}
           fill
+          loading="lazy"
+          decoding="async"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
           onError={() => setImageError(true)}
         />
         
-        {/* Subtle Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d16] via-transparent to-black/20" />
 
-        {/* METRIC BADGE */}
         {project.metrics && (
           <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-mono font-medium text-emerald-400 flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -43,16 +42,13 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
           </div>
         )}
 
-        {/* CATEGORY BADGE */}
         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-purple-950/70 backdrop-blur-md border border-purple-500/30 text-[11px] font-mono font-medium text-purple-300">
           {project.category}
         </div>
       </div>
 
-      {/* CARD BODY CONTENT */}
       <div className="p-6 flex flex-col flex-grow justify-between">
         <div>
-          {/* TITLE & LIVE INDICATOR */}
           <div className="flex items-center justify-between gap-2 mb-2.5">
             <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors tracking-tight">
               {project.title}
@@ -62,12 +58,10 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
             </span>
           </div>
 
-          {/* DESCRIPTION */}
           <p className="text-slate-300 text-sm leading-relaxed mb-5 line-clamp-3">
             {project.description}
           </p>
 
-          {/* TECH STACK TAGS */}
           <div className="flex flex-wrap gap-1.5 mb-6">
             {project.tags.map((tag) => (
               <span
@@ -80,7 +74,6 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
           </div>
         </div>
 
-        {/* ACTION BUTTONS */}
         <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] mt-auto">
           <a
             href={project.link}
@@ -109,7 +102,3 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
     </motion.div>
   )
 }
-
-
-
-

@@ -46,19 +46,11 @@
   /* Creates a downward bulge at the bottom of each panel */
 }
 
-/* ── WORD TRANSITION ────────────────────────────────────── */
-/*
-  The curved motion for words is handled via Framer Motion
-  custom variants (see WordsPreloader.tsx).
-  These CSS rules handle the base word typography.
-*/
 .preloader-word {
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
 }
-
-/* ── COUNTER ─────────────────────────────────────────────── */
 .preloader-counter {
   position: fixed;
   bottom: 32px;

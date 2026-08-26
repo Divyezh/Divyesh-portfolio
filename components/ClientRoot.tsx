@@ -1,5 +1,5 @@
-// components/ClientRoot.tsx — 'use client' wrapper
 'use client'
+
 import React, { useEffect } from 'react'
 import StarsCanvas from './main/star-background'
 
@@ -17,4 +17,3 @@ export default function ClientRoot({ children }: { children: React.ReactNode }) 
     </>
   )
 }
-

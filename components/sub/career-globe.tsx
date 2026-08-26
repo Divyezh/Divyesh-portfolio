@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useRef, useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
 import * as THREE from "three"
@@ -11,12 +12,6 @@ export default function CareerGlobe() {
   
   const [step, setStep] = useState(0)
 
-  // Timing to match terminal:
-  // 3.5s (step 1): Radar starts
-  // 4.5s (step 2): Location pins appear
-  // 5.0s (step 3): Floating job cards
-  // 5.5s (step 4): Final status card
-  
   useEffect(() => {
     if (!isInView) return
     
@@ -29,7 +24,6 @@ export default function CareerGlobe() {
     return () => timers.forEach(clearTimeout)
   }, [isInView])
 
-  // Raw Three.js implementation to bypass React 19 / R3F Reconciler bug
   useEffect(() => {
     if (!canvasRef.current) return
 
@@ -37,8 +31,16 @@ export default function CareerGlobe() {
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
     camera.position.z = 4
 
-    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true, antialias: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+    const segments = isMobile ? 20 : 32
+
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas: canvasRef.current, 
+      alpha: true, 
+      antialias: !isMobile,
+      powerPreference: "high-performance"
+    })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.75))
     
     const updateSize = () => {
       if (!canvasRef.current || !canvasRef.current.parentElement) return
@@ -49,30 +51,57 @@ export default function CareerGlobe() {
     }
     
     updateSize()
-    window.addEventListener('resize', updateSize)
+    window.addEventListener('resize', updateSize, { passive: true })
 
-    // Inner Solid Core
-    const coreGeometry = new THREE.SphereGeometry(1.45, 32, 32)
+    const coreGeometry = new THREE.SphereGeometry(1.45, segments, segments)
     const coreMaterial = new THREE.MeshBasicMaterial({ color: 0x0A0A1A, transparent: true, opacity: 0.9 })
     const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial)
     scene.add(coreMesh)
 
-    // Outer Wireframe
-    const wireGeometry = new THREE.SphereGeometry(1.5, 32, 32)
+    const wireGeometry = new THREE.SphereGeometry(1.5, segments, segments)
     const wireMaterial = new THREE.MeshBasicMaterial({ color: 0x38BDF8, wireframe: true, transparent: true, opacity: 0.15 })
     const wireMesh = new THREE.Mesh(wireGeometry, wireMaterial)
     scene.add(wireMesh)
 
     let animationId: number
+    let isVisible = true
+    let isTabVisible = !document.hidden
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+        if (isVisible && isTabVisible) {
+          animate()
+        } else {
+          cancelAnimationFrame(animationId)
+        }
+      },
+      { threshold: 0.05 }
+    )
+    if (canvasRef.current) observer.observe(canvasRef.current)
+
+    const handleVisibilityChange = () => {
+      isTabVisible = !document.hidden
+      if (isVisible && isTabVisible) {
+        animate()
+      } else {
+        cancelAnimationFrame(animationId)
+      }
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+
     const animate = () => {
-      animationId = requestAnimationFrame(animate)
+      if (!isVisible || !isTabVisible) return
       wireMesh.rotation.y += 0.003
       wireMesh.rotation.x += 0.001
       renderer.render(scene, camera)
+      animationId = requestAnimationFrame(animate)
     }
     animate()
 
     return () => {
+      observer.disconnect()
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
       window.removeEventListener('resize', updateSize)
       cancelAnimationFrame(animationId)
       coreGeometry.dispose()
@@ -85,12 +114,8 @@ export default function CareerGlobe() {
 
   return (
     <div ref={ref} className="relative w-full h-[600px] flex items-center justify-center">
-      
-      {/* 3D Canvas wrapper */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="w-[400px] h-[400px] md:w-[500px] md:h-[500px] relative">
-          
-          {/* Radar Sweep Animation */}
           {step >= 1 && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -109,13 +134,10 @@ export default function CareerGlobe() {
             </motion.div>
           )}
 
-          {/* Replaced R3F Canvas with standard HTML5 Canvas */}
           <canvas ref={canvasRef} className="z-10 absolute inset-0 w-full h-full" style={{ pointerEvents: 'none' }} />
 
-          {/* Location Pins */}
           {step >= 2 && (
             <>
-              {/* Ahmedabad */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0 }} 
                 animate={{ opacity: 1, scale: 1 }}
@@ -130,7 +152,6 @@ export default function CareerGlobe() {
                 </div>
               </motion.div>
 
-              {/* Bangalore */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0 }} 
                 animate={{ opacity: 1, scale: 1 }}
@@ -146,7 +167,6 @@ export default function CareerGlobe() {
                 </div>
               </motion.div>
 
-              {/* Remote */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0 }} 
                 animate={{ opacity: 1, scale: 1 }}
@@ -164,7 +184,6 @@ export default function CareerGlobe() {
             </>
           )}
 
-          {/* Floating Job Cards */}
           {step >= 3 && (
             <>
               <motion.div 
@@ -198,11 +217,9 @@ export default function CareerGlobe() {
               </motion.div>
             </>
           )}
-
         </div>
       </div>
 
-      {/* Final Status Card Overlay */}
       {step >= 4 && (
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
@@ -241,7 +258,6 @@ export default function CareerGlobe() {
           </div>
         </motion.div>
       )}
-
     </div>
   )
 }

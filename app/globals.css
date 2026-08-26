@@ -125,8 +125,38 @@ html {
 .animate-marquee {
   animation: marquee 30s linear infinite;
   will-change: transform;
+  transform: translateZ(0);
 }
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* GPU Hardware Acceleration & Layer Promotion */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Content visibility optimization for low-end devices */
+@media (max-width: 768px) {
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+  }
+}
+
+/* Accessibility & Low-power mode motion reduction */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 

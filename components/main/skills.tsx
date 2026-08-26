@@ -1,4 +1,5 @@
 'use client'
+
 import React from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -47,22 +48,18 @@ export default function Skills() {
       id="skills"
       className="relative flex flex-col items-center justify-center pt-24 pb-28 px-4 md:px-8 max-w-7xl mx-auto w-full z-20"
     >
-      {/* AMBIENT RADIAL GLOW */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none -z-10"
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none -z-10" />
 
       <SkillText />
 
-      {/* VELOCITY SCROLL BANNER */}
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden my-10 py-3 glass-card border-y border-white/[0.08]">
         <ScrollVelocityContainer className="text-xl md:text-3xl font-extrabold tracking-tight">
-          <ScrollVelocityRow baseVelocity={18} direction={1}>
+          <ScrollVelocityRow baseVelocity={4} direction={1}>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-sky-300 to-indigo-400 px-4">
               Next.js 14 • React.js • TypeScript • Tailwind CSS • Node.js • PostgreSQL • Prisma ORM • Claude API • OpenAI •
             </span>
           </ScrollVelocityRow>
-          <ScrollVelocityRow baseVelocity={18} direction={-1}>
+          <ScrollVelocityRow baseVelocity={4} direction={-1}>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-purple-300 to-indigo-300 px-4">
               High Scalability • Clean Architecture • Micro-Interactions • Type-Safe APIs • Production Speed •
             </span>
@@ -72,7 +69,6 @@ export default function Skills() {
         <div className="from-[#06060c] pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l" />
       </div>
 
-      {/* CATEGORIZED BENTO GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
         {skillCategories.map((category, index) => {
           const Icon = category.icon
@@ -85,7 +81,6 @@ export default function Skills() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative p-6 sm:p-7 rounded-3xl glass-card border border-white/[0.08] hover:border-purple-500/30 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
             >
-              {/* Category Header */}
               <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-purple-400">
@@ -100,7 +95,6 @@ export default function Skills() {
                 </span>
               </div>
 
-              {/* Skills Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {category.skills.map((skill) => (
                   <motion.div
@@ -114,6 +108,8 @@ export default function Skills() {
                         alt={skill.skill_name}
                         width={40}
                         height={40}
+                        loading="lazy"
+                        decoding="async"
                         className="object-contain max-h-9 max-w-9 transition-transform group-hover/skill:scale-110"
                       />
                     </div>
@@ -135,4 +131,3 @@ export default function Skills() {
     </section>
   )
 }
-
