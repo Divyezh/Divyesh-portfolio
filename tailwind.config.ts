@@ -10,13 +10,24 @@ const config: Config = {
     extend: {
       colors: {
         border: "rgba(255, 255, 255, 0.15)",
-        background: "#060611",
+        background: "#0e070c",
         purple: {
-          light:  "#d8b4fe",
-          mid:    "#a855f7",
-          core:   "#8b5cf6",
-          deep:   "#581c87",
-          glow:   "rgba(139, 92, 246, 0.15)",
+          50: "#fff5f0",
+          100: "#ffe6d7",
+          200: "#FFC59E",
+          300: "#FF9F9A",
+          400: "#FF9F9A",
+          500: "#E66277",
+          600: "#AD4161",
+          700: "#8F3858",
+          800: "#562747",
+          900: "#39192f",
+          950: "#1a0e16",
+          light:  "#FFC59E",
+          mid:    "#FF9F9A",
+          core:   "#E66277",
+          deep:   "#562747",
+          glow:   "rgba(230, 98, 119, 0.15)",
         },
       },
       spacing: {
@@ -31,9 +42,9 @@ const config: Config = {
       },
       backgroundImage: {
         "purple-gradient":
-          "linear-gradient(90deg, #d8b4fe 0%, #a855f7 50%, #8b5cf6 100%)",
+          "linear-gradient(90deg, #FFC59E 0%, #FF9F9A 50%, #E66277 100%)",
         "purple-radial":
-          "radial-gradient(ellipse at center, rgba(139,92,246,0.15) 0%, transparent 70%)",
+          "radial-gradient(ellipse at center, rgba(230,98,119,0.15) 0%, transparent 70%)",
       },
       keyframes: {
         shimmer: {

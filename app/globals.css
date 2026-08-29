@@ -4,11 +4,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #06060c;
-  --surface: #0c0d16;
+  --background: #0e070c;
+  --surface: #1a0e16;
   --surface-border: rgba(255, 255, 255, 0.08);
-  --accent: #8b5cf6;
-  --accent-cyan: #38bdf8;
+  --accent: #E66277;
+  --accent-cyan: #FFC59E;
 }
 
 body {
@@ -24,7 +24,7 @@ body {
 
 /* Glassmorphism Cards with 1px Highlight Refraction */
 .glass-card {
-  background: rgba(12, 13, 22, 0.7);
+  background: rgba(26, 14, 22, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -36,8 +36,8 @@ body {
 }
 
 .glass-card-hover:hover {
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 12px 40px -10px rgba(139, 92, 246, 0.2);
+  border-color: rgba(230, 98, 119, 0.3);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 12px 40px -10px rgba(230, 98, 119, 0.2);
 }
 
 /* Modern Gradient Text */
@@ -49,7 +49,7 @@ body {
 }
 
 .gradient-accent-text {
-  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #FFC59E 0%, #E66277 50%, #8F3858 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -57,7 +57,7 @@ body {
 
 /* Legacy Welcome box & text for compatibility */
 .Welcome-text {
-  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #FFC59E 0%, #E66277 50%, #8F3858 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -70,8 +70,8 @@ body {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: 9999px;
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(230, 98, 119, 0.25);
+  background: rgba(230, 98, 119, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: flex;
   position: relative;
@@ -82,7 +82,7 @@ body {
 /* Spotlight Card Background */
 .spotlight-border {
   position: relative;
-  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(139, 92, 246, 0.12), transparent 40%);
+  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(230, 98, 119, 0.12), transparent 40%);
 }
 
 /* Star and glow utilities */
@@ -103,14 +103,14 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #06060c;
+  background: #0e070c;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.4);
+  background: rgba(230, 98, 119, 0.4);
 }
 
 html {

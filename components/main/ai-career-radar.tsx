@@ -10,7 +10,7 @@ export default function AiCareerRadar() {
     <section id="radar" className="relative flex flex-col items-center justify-center py-28 px-4 md:px-8 overflow-hidden min-h-screen max-w-7xl mx-auto w-full z-20">
       {/* AMBIENT RADIAL GLOW */}
       <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 blur-[140px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] bg-sky-600/10 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] bg-purple-800/10 blur-[140px] rounded-full pointer-events-none -z-10" />
 
       {/* HEADER */}
       <div className="relative z-20 w-full mb-12 text-center flex flex-col items-center">
@@ -35,7 +35,7 @@ export default function AiCareerRadar() {
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
         >
           AI Career{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-sky-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500">
             Radar &amp; Telemetry
           </span>
         </motion.h2>

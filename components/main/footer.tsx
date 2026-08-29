@@ -56,7 +56,7 @@ export default function Footer() {
           scale: cardScale,
           opacity: cardOpacity,
         }}
-        className="max-w-[1400px] mx-auto bg-[#0c0d16]/90 backdrop-blur-2xl rounded-[32px] sm:rounded-[44px] md:rounded-[54px] p-7 sm:p-10 md:p-14 lg:p-16 pb-6 md:pb-8 relative overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.8)] border border-white/[0.08]"
+        className="max-w-[1400px] mx-auto bg-[#1a0e16]/90 backdrop-blur-2xl rounded-[32px] sm:rounded-[44px] md:rounded-[54px] p-7 sm:p-10 md:p-14 lg:p-16 pb-6 md:pb-8 relative overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.8)] border border-white/[0.08]"
       >
         <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 blur-[100px] pointer-events-none" />
 
@@ -152,7 +152,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] hover:bg-purple-500/15 border border-white/[0.08] hover:border-purple-500/40 hover:scale-105 transition-all text-xs font-semibold text-slate-200 shadow-sm"
               >
-                <FaLinkedin className="w-3 h-3 text-[#38bdf8]" />
+                <FaLinkedin className="w-3 h-3 text-purple-300" />
                 <span>@divyesh-soni</span>
               </a>
 

@@ -33,7 +33,7 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
           onError={() => setImageError(true)}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d16] via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0e16] via-transparent to-black/20" />
 
         {project.metrics && (
           <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-mono font-medium text-emerald-400 flex items-center gap-1">

@@ -54,12 +54,12 @@ export default function CareerGlobe() {
     window.addEventListener('resize', updateSize, { passive: true })
 
     const coreGeometry = new THREE.SphereGeometry(1.45, segments, segments)
-    const coreMaterial = new THREE.MeshBasicMaterial({ color: 0x0A0A1A, transparent: true, opacity: 0.9 })
+    const coreMaterial = new THREE.MeshBasicMaterial({ color: 0x0e070c, transparent: true, opacity: 0.9 })
     const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial)
     scene.add(coreMesh)
 
     const wireGeometry = new THREE.SphereGeometry(1.5, segments, segments)
-    const wireMaterial = new THREE.MeshBasicMaterial({ color: 0x38BDF8, wireframe: true, transparent: true, opacity: 0.15 })
+    const wireMaterial = new THREE.MeshBasicMaterial({ color: 0xE66277, wireframe: true, transparent: true, opacity: 0.2 })
     const wireMesh = new THREE.Mesh(wireGeometry, wireMaterial)
     scene.add(wireMesh)
 
@@ -159,8 +159,8 @@ export default function CareerGlobe() {
                 className="absolute top-[50%] right-[30%] z-20 flex flex-col items-center group cursor-pointer"
               >
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-500 rounded-full animate-ping opacity-75" />
-                  <MapPin className="w-4 h-4 text-blue-400 relative z-10 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
+                  <div className="absolute inset-0 bg-purple-500 rounded-full animate-ping opacity-75" />
+                  <MapPin className="w-4 h-4 text-purple-300 relative z-10 drop-shadow-[0_0_8px_rgba(230,98,119,0.8)]" />
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-5 bg-black/80 backdrop-blur-md px-2 py-1 rounded text-xs text-white whitespace-nowrap border border-white/10 pointer-events-none">
                   Bangalore
@@ -190,7 +190,7 @@ export default function CareerGlobe() {
                 initial={{ opacity: 0, x: -20 }} 
                 animate={{ opacity: 1, x: 0, y: [-10, 10, -10] }}
                 transition={{ opacity: { duration: 0.5 }, y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute top-10 -left-10 z-30 bg-[#0F1020]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                className="absolute top-10 -left-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="text-sm font-semibold text-white">Frontend Engineer</div>
                 <div className="text-xs text-green-400">98% Match</div>
@@ -200,7 +200,7 @@ export default function CareerGlobe() {
                 initial={{ opacity: 0, x: 20 }} 
                 animate={{ opacity: 1, x: 0, y: [10, -10, 10] }}
                 transition={{ opacity: { duration: 0.5 }, y: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute top-32 -right-10 z-30 bg-[#0F1020]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                className="absolute top-32 -right-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="text-sm font-semibold text-white">React Developer</div>
                 <div className="text-xs text-green-400">95% Match</div>
@@ -210,7 +210,7 @@ export default function CareerGlobe() {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: [-10, 10, -10] }}
                 transition={{ opacity: { duration: 0.5 }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute bottom-10 left-10 z-30 bg-[#0F1020]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                className="absolute bottom-10 left-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="text-sm font-semibold text-white">Next.js Developer</div>
                 <div className="text-xs text-green-400">99% Match</div>
@@ -225,12 +225,12 @@ export default function CareerGlobe() {
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute z-40 bg-[#060611]/90 backdrop-blur-2xl border border-purple-500/30 rounded-2xl p-6 shadow-[0_0_50px_rgba(139,92,246,0.2)] max-w-[320px] w-full"
+          className="absolute z-40 bg-[#1a0e16]/95 backdrop-blur-2xl border border-purple-500/30 rounded-2xl p-6 shadow-[0_0_50px_rgba(230,98,119,0.25)] max-w-[320px] w-full"
         >
           <div className="text-center border-b border-white/10 pb-4 mb-4">
             <div className="text-xs text-purple-400 tracking-widest font-semibold uppercase mb-1">AI Analysis Complete</div>
             <div className="text-2xl font-bold text-white">Best Match</div>
-            <div className="text-lg text-blue-400 font-medium">Frontend Engineer</div>
+            <div className="text-lg text-purple-300 font-medium">Frontend Engineer</div>
           </div>
           
           <div className="space-y-4 text-sm">
@@ -252,7 +252,7 @@ export default function CareerGlobe() {
 
           <div className="mt-6 pt-4 border-t border-white/10 text-center">
             <div className="text-xs text-gray-500 mb-1">STATUS</div>
-            <div className="text-sm font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
+            <div className="text-sm font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-500">
               Ready to Build Amazing Products.
             </div>
           </div>

@@ -94,7 +94,7 @@ export default function OrbitingCirclesGlobeDemo() {
                 }
               >
                 <div
-                  className="p-2.5 sm:p-3 rounded-full bg-[#0c0d16]/90 border border-white/15 backdrop-blur-md shadow-[0_0_15px_rgba(139,92,246,0.25)] -mt-8 relative z-10 flex items-center justify-center hover:border-purple-500/50 hover:scale-110 transition-transform"
+                  className="p-2.5 sm:p-3 rounded-full bg-[#1a0e16]/90 border border-white/15 backdrop-blur-md shadow-[0_0_15px_rgba(230,98,119,0.25)] -mt-8 relative z-10 flex items-center justify-center hover:border-purple-500/50 hover:scale-110 transition-transform"
                   style={
                     {
                       "--counter-offset": `${-iconData.angle}deg`,

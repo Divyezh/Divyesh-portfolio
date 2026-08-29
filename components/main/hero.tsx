@@ -8,12 +8,12 @@ export default function Hero() {
   useEffect(() => setMounted(true), [])
 
   return (
-    <div className="relative flex flex-col h-full w-full min-h-[95vh] bg-[#06060c] overflow-hidden" id="about-me">
+    <div className="relative flex flex-col h-full w-full min-h-[95vh] bg-[#0e070c] overflow-hidden" id="about-me">
       {/* VIGNETTE EFFECT */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          boxShadow: 'inset 0 0 150px 30px #06060c',
+          boxShadow: 'inset 0 0 150px 30px #0e070c',
         }}
       />
 
@@ -24,8 +24,8 @@ export default function Hero() {
       />
 
       {/* AMBIENT AURORA GLOWS */}
-      <div className="absolute top-[-15%] left-[20%] w-[600px] h-[450px] bg-purple-600/15 blur-[150px] rounded-full pointer-events-none z-[0]" />
-      <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] bg-sky-600/10 blur-[150px] rounded-full pointer-events-none z-[0]" />
+      <div className="absolute top-[-15%] left-[20%] w-[600px] h-[450px] bg-[#E66277]/10 blur-[150px] rounded-full pointer-events-none z-[0]" />
+      <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] bg-[#AD4161]/10 blur-[150px] rounded-full pointer-events-none z-[0]" />
 
       {/* FLOATING PARTICLES */}
       {mounted && (
@@ -56,7 +56,7 @@ export default function Hero() {
       {/* BOTTOM GRADIENT FADE */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 z-[3] pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent, #06060c)' }}
+        style={{ background: 'linear-gradient(to bottom, transparent, #0e070c)' }}
       />
 
       <div className="relative z-[10] w-full h-full flex flex-col justify-center">

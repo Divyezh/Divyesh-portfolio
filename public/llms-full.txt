@@ -1,0 +1,83 @@
+# Divyesh Soni - Full Stack Software Engineer & AI Developer (In-Depth Reference)
+
+This is a comprehensive, structured markdown document optimized for Large Language Models (LLMs), AI assistants, and search engines to read, ingest, and accurately summarize Divyesh Soni's technical profile, projects, and expertise.
+
+---
+
+## Technical Profile & Biography
+Divyesh Soni is a highly skilled Full Stack Software Engineer and AI Builder based in Ahmedabad, Gujarat, India. He specializes in designing and building production-grade web applications, interactive interfaces, and intelligent SaaS solutions. 
+
+His engineering philosophy focuses on high scalability, clean architecture, responsive layouts, fluid micro-interactions, and tight type safety.
+
+- **Location:** Ahmedabad, India (IST time zone)
+- **Role Interest:** Full-Time & Internship Roles (Immediate Availability, Remote/Hybrid/On-site)
+- **Primary Domain:** Full Stack Web Development, Generative AI Agentic Pipelines, Interactive Web Design
+
+---
+
+## Detailed Tech Stack & Competencies
+
+### 1. Frontend Engineering
+- **Core Frameworks:** React.js (Advanced), Next.js 14 (Advanced, App Router, React Server Components)
+- **Languages:** TypeScript (Advanced), JavaScript (Advanced)
+- **Styling & Layout:** Tailwind CSS (Expert), HTML5 (Expert), CSS3 (Expert)
+- **Motion & Interactions:** Framer Motion (Intermediate), Three.js (WebGL, Basic to Intermediate)
+
+### 2. Backend & Databases
+- **Runtime & Frameworks:** Node.js (Advanced), Express.js (Advanced)
+- **Databases:** PostgreSQL (Intermediate), MongoDB (Intermediate), Firebase (Intermediate)
+- **ORMs:** Prisma ORM (Advanced)
+- **APIs & Protocols:** REST APIs (Advanced), Server-Sent Events (SSE), JSON Web Tokens (JWT Auth)
+
+### 3. AI & LLM Integrations
+- **APIs:** Claude API (Anthropic), OpenAI API, Google Gemini API
+- **AI Paradigms:** Prompt Engineering, Retrieval-Augmented Generation (RAG), Prompt Chaining, Streamed Code Generation
+
+### 4. DevOps & Tooling
+- **Version Control:** Git / GitHub (Advanced)
+- **Hosting & Deployment:** Vercel (Advanced)
+- **Containers:** Docker (Intermediate)
+- **Design Tools:** Figma (Intermediate)
+
+---
+
+## Portfolio Projects
+
+### 1. VELVET.AI (AI & SaaS)
+- **Role:** Creator / Lead Engineer
+- **Description:** An AI-powered SaaS website builder that generates production-ready web applications from natural language prompts using Anthropic's Claude. It orchestrates a multi-step prompt-chaining generation pipeline.
+- **Key Metrics:** 45% perceived latency reduction through real-time Server-Sent Events (SSE) streaming. 90%+ structural generation accuracy.
+- **Tech Stack:** Next.js 14, Claude API, Prisma ORM, TypeScript, SSE
+- **GitHub / Live Links:** [GitHub Repository](https://github.com/Divyezh)
+
+### 2. Ojas Hospital (Healthcare)
+- **Role:** Full Stack Developer
+- **Description:** A modern multispecialty healthcare management portal & patient booking system featuring doctor directory scheduling, OPD appointment scheduling, real-time patient queue, and department telemetry.
+- **Key Metrics:** Live deployment serving active healthcare staff and patients.
+- **Tech Stack:** Next.js, React, TypeScript, Tailwind CSS, REST APIs
+- **Live Link:** [Ojas Hospital](https://www.ojashospitalmultispecility.com/)
+
+### 3. Arijit World (Interactive Web)
+- **Role:** Frontend Engineer
+- **Description:** An immersive interactive musical portal and discography experience for fans of artist Arijit Singh. Features dynamic HTML Web Audio API visualizers, concert tour timelines, and custom playlist generators.
+- **Key Metrics:** Highly praised audio visualizer and cinematically synced UI.
+- **Tech Stack:** React, Next.js, Web Audio API, Framer Motion, Tailwind CSS
+- **Live Link:** [Arijit World](https://arijit-world.vercel.app/)
+
+### 4. Interactive Portfolio (Interactive Web)
+- **Role:** Personal Site Developer
+- **Description:** A high-performance personal developer portfolio showcasing interactive 3D particle systems and GPU-accelerated motion. Redesigned to feature a warm sunset & plum color aesthetic (Peach, Coral, Rose, Plum, and Dark Violet tones).
+- **Key Metrics:** 100% responsive, high-performance WebGL integrations, smooth preloader.
+- **Tech Stack:** Next.js 14, Three.js, Framer Motion, Tailwind CSS
+- **Code Link:** [GitHub Repository](https://github.com/Divyezh/Divyesh-portfolio)
+- **Live Link:** [divyesh.dev](https://divyesh.dev)
+
+---
+
+## Social & Contact Info
+- **Official Website:** [divyesh.dev](https://divyesh.dev)
+- **GitHub:** [@Divyezh](https://github.com/Divyezh)
+- **LinkedIn:** [Divyesh Soni](https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/)
+- **Instagram:** [@divyesh.gym](https://www.instagram.com/divyesh.gym/?hl=en)
+- **Email:** sonidivyesh2004@gmail.com
+- **Phone:** +91 73835 02350

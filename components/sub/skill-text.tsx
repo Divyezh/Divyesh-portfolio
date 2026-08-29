@@ -26,7 +26,7 @@ export default function SkillText() {
         className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
       >
         Engineered for{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-sky-400">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500">
           Scale &amp; Precision
         </span>
       </motion.h2>

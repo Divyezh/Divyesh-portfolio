@@ -40,7 +40,7 @@ export default function ProjectsSection() {
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
         >
           Selected{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-sky-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500">
             Works &amp; Engineering
           </span>
         </motion.h2>

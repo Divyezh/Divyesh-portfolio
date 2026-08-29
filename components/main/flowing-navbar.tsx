@@ -104,7 +104,7 @@ export default function FlowingNavbar() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-[0_0_15px_rgba(139,92,246,0.4)] transition-all duration-300"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 shadow-[0_0_15px_rgba(230,98,119,0.35)] transition-all duration-300"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Connect</span>
@@ -124,7 +124,7 @@ export default function FlowingNavbar() {
       {/* Mobile Drawer Menu */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#06060c]/90 backdrop-blur-xl md:hidden pt-24 px-6 flex flex-col justify-between pb-12 transition-all duration-300 animate-fadeIn"
+          className="fixed inset-0 z-40 bg-[#0e070c]/90 backdrop-blur-xl md:hidden pt-24 px-6 flex flex-col justify-between pb-12 transition-all duration-300 animate-fadeIn"
           onClick={(e) => {
             if ((e.target as HTMLElement).tagName === 'A') {
               setIsOpen(false);

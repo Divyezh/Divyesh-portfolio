@@ -14,7 +14,7 @@ Divyesh Soni is a highly skilled Full Stack Software Engineer based in Ahmedabad
 
 ## Key Projects
 1. **AI Chatbots & SaaS:** Specialized in building LLM-powered applications using RAG (Retrieval-Augmented Generation) and agentic workflows.
-2. **Space Portfolio:** A high-performance, visually stunning Next.js portfolio featuring 3D particle backgrounds, staggered framer motion animations, and a deep-purple galaxy aesthetic.
+2. **Interactive Portfolio:** A high-performance, visually stunning Next.js portfolio featuring 3D particle backgrounds, staggered Framer Motion animations, and a warm sunset & plum aesthetic (featuring Peach, Coral, Rose, Plum, and Dark Violet tones).
 
 ## Contact Information
 - **GitHub:** [Divyezh](https://github.com/Divyezh)

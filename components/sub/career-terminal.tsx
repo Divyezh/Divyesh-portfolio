@@ -42,7 +42,7 @@ export default function CareerTerminal() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative w-full max-w-[600px] rounded-2xl overflow-hidden border border-purple-500/30 bg-[#0F1020]/60 backdrop-blur-xl shadow-[0_0_40px_rgba(139,92,246,0.15)] group"
+      className="relative w-full max-w-[600px] rounded-2xl overflow-hidden border border-purple-500/30 bg-[#1a0e16]/60 backdrop-blur-xl shadow-[0_0_40px_rgba(230,98,119,0.15)] group"
     >
       {/* Noise Texture */}
       <div 
@@ -84,7 +84,7 @@ export default function CareerTerminal() {
         {step >= 3 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <span className="text-purple-400">{'>'}</span> Scanning Opportunities...
-            <div className="flex items-center gap-2 text-blue-400 mt-1 ml-4">
+            <div className="flex items-center gap-2 text-purple-300 mt-1 ml-4">
               <motion.div 
                 initial={{ clipPath: "inset(0 100% 0 0)" }}
                 animate={{ clipPath: "inset(0 0% 0 0)" }}
@@ -147,8 +147,8 @@ export default function CareerTerminal() {
                 </div>
                 <div>
                   <div className="text-gray-500 text-xs">LOCATION</div>
-                  <div className="text-blue-300">Ahmedabad</div>
-                  <div className="text-blue-300">Remote / Hybrid</div>
+                  <div className="text-purple-300">Ahmedabad</div>
+                  <div className="text-purple-300">Remote / Hybrid</div>
                 </div>
               </div>
 

@@ -137,7 +137,7 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
                 left: 0,
                 right: 0,
                 height: '52%',
-                background: '#030014',   /* your portfolio bg color */
+                background: '#0e070c',   /* your portfolio bg color */
                 zIndex: 2,
               }}
             />
@@ -155,7 +155,7 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
                 left: 0,
                 right: 0,
                 height: '52%',          /* slight overlap at center = no gap */
-                background: '#030014',
+                background: '#0e070c',
                 zIndex: 2,
               }}
             />
@@ -164,7 +164,7 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: '#030014',
+              background: '#0e070c',
               zIndex: 1,
             }} />
 
@@ -195,11 +195,11 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
                     // Last word (name) gets purple gradient
                     ...(isLastWord
                       ? {
-                          background: 'linear-gradient(90deg, #c084fc, #8b5cf6, #6d28d9)',
+                          background: 'linear-gradient(90deg, #FFC59E, #FF9F9A, #E66277)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text',
-                          filter: 'drop-shadow(0 0 15px rgba(139, 92, 246, 0.6))',
+                          filter: 'drop-shadow(0 0 15px rgba(230, 98, 119, 0.6))',
                         }
                       : {
                           color: '#ffffff',

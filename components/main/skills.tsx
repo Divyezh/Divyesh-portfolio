@@ -15,29 +15,29 @@ const skillCategories = [
   {
     title: "Frontend Engineering",
     icon: Code2,
-    color: "from-blue-500/20 to-purple-500/20",
-    borderColor: "border-blue-500/30",
+    color: "from-purple-500/10 to-purple-600/10",
+    borderColor: "border-purple-500/20",
     skills: Frontend_skill,
   },
   {
     title: "Backend & Databases",
     icon: Database,
-    color: "from-purple-500/20 to-indigo-500/20",
-    borderColor: "border-purple-500/30",
+    color: "from-purple-600/10 to-purple-700/10",
+    borderColor: "border-purple-600/20",
     skills: Backend_skill,
   },
   {
     title: "AI & LLM Integration",
     icon: BrainCircuit,
-    color: "from-indigo-500/20 to-cyan-500/20",
-    borderColor: "border-indigo-500/30",
+    color: "from-purple-700/10 to-purple-800/10",
+    borderColor: "border-purple-700/20",
     skills: AI_skill,
   },
   {
     title: "DevOps & Cloud Workflow",
     icon: Wrench,
-    color: "from-cyan-500/20 to-emerald-500/20",
-    borderColor: "border-cyan-500/30",
+    color: "from-purple-800/10 to-purple-900/10",
+    borderColor: "border-purple-800/20",
     skills: Full_stack,
   },
 ]
@@ -55,18 +55,18 @@ export default function Skills() {
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden my-10 py-3 glass-card border-y border-white/[0.08]">
         <ScrollVelocityContainer className="text-xl md:text-3xl font-extrabold tracking-tight">
           <ScrollVelocityRow baseVelocity={4} direction={1}>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-sky-300 to-indigo-400 px-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500 px-4">
               Next.js 14 • React.js • TypeScript • Tailwind CSS • Node.js • PostgreSQL • Prisma ORM • Claude API • OpenAI •
             </span>
           </ScrollVelocityRow>
           <ScrollVelocityRow baseVelocity={4} direction={-1}>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-purple-300 to-indigo-300 px-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500 px-4">
               High Scalability • Clean Architecture • Micro-Interactions • Type-Safe APIs • Production Speed •
             </span>
           </ScrollVelocityRow>
         </ScrollVelocityContainer>
-        <div className="from-[#06060c] pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r" />
-        <div className="from-[#06060c] pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l" />
+        <div className="from-[#0e070c] pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r" />
+        <div className="from-[#0e070c] pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">

@@ -6,7 +6,7 @@ import ClientRoot from "@/components/ClientRoot"
 const inter = Inter({ subsets: ["latin"] })
 
 export const viewport: Viewport = {
-  themeColor: "#06060c",
+  themeColor: "#0e070c",
   width: "device-width",
   initialScale: 1,
 }
@@ -54,12 +54,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "googled1a697e54b4ff7a7",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#06060c] overflow-x-hidden`}>
+      <body className={`${inter.className} bg-[#0e070c] overflow-x-hidden`}>
         <ClientRoot>{children}</ClientRoot>
       </body>
     </html>

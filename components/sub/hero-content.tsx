@@ -37,7 +37,7 @@ export default function HeroContent() {
       >
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08]">
           Crafting{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-sky-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500">
             Intelligent Web Apps
           </span>{" "}
           &amp; Scalable Systems.
@@ -63,7 +63,7 @@ export default function HeroContent() {
       >
         <a
           href="#projects"
-          className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] active:scale-[0.98]"
+          className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full hover:shadow-[0_0_25px_rgba(230,98,119,0.4)] active:scale-[0.98]"
         >
           <span className="flex items-center gap-2">
             Explore Selected Projects
@@ -131,7 +131,7 @@ export default function HeroContent() {
           <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider mt-0.5">Technologies</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-extrabold text-sky-400 tracking-tight">100%</span>
+          <span className="text-2xl sm:text-3xl font-extrabold text-purple-500 tracking-tight">100%</span>
           <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider mt-0.5">Responsive</span>
         </div>
       </motion.div>
