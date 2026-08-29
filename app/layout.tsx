@@ -12,6 +12,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://divyesh-portfolio-phi.vercel.app"),
   title: "Divyesh Soni | Full Stack Software Engineer & AI Developer",
   description: "Portfolio of Divyesh Soni, a Full Stack Developer & AI/SaaS Builder from Ahmedabad, India. Specializing in Next.js, React, Node.js, and generative AI products.",
   keywords: [
@@ -30,11 +31,22 @@ export const metadata: Metadata = {
     "Three.js"
   ],
   authors: [{ name: "Divyesh Soni", url: "https://github.com/Divyezh" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Divyesh Soni | Full Stack Developer",
     description: "Full Stack Software Engineer with experience in Website, Mobile, and Software development. Check out my projects and skills.",
-    url: "https://github.com/Divyezh/Divyesh-portfolio",
+    url: "https://divyesh-portfolio-phi.vercel.app",
     siteName: "Divyesh Soni Portfolio",
+    images: [
+      {
+        url: "/assets/portfolio.png",
+        width: 1200,
+        height: 630,
+        alt: "Divyesh Soni Developer Portfolio Preview",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -42,6 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Divyesh Soni | Full Stack Developer",
     description: "Full Stack Software Engineer with experience in Website, Mobile, and Software development. Check out my projects and skills.",
+    images: ["/assets/portfolio.png"],
   },
   robots: {
     index: true,
@@ -60,8 +73,32 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Divyesh Soni",
+    "url": "https://divyesh-portfolio-phi.vercel.app",
+    "image": "https://divyesh-portfolio-phi.vercel.app/assets/portfolio.png",
+    "sameAs": [
+      "https://github.com/Divyezh",
+      "https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
+    ],
+    "jobTitle": "Full Stack Software Engineer & AI Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance"
+    },
+    "description": "Full Stack Developer specializing in Next.js, React, Node.js, and generative AI products."
+  }
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.className} bg-[#0e070c] overflow-x-hidden`}>
         <ClientRoot>{children}</ClientRoot>
       </body>

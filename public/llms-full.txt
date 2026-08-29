@@ -70,12 +70,12 @@ His engineering philosophy focuses on high scalability, clean architecture, resp
 - **Key Metrics:** 100% responsive, high-performance WebGL integrations, smooth preloader.
 - **Tech Stack:** Next.js 14, Three.js, Framer Motion, Tailwind CSS
 - **Code Link:** [GitHub Repository](https://github.com/Divyezh/Divyesh-portfolio)
-- **Live Link:** [divyesh.dev](https://divyesh.dev)
+- **Live Link:** [divyesh-portfolio-phi.vercel.app](https://divyesh-portfolio-phi.vercel.app)
 
 ---
 
 ## Social & Contact Info
-- **Official Website:** [divyesh.dev](https://divyesh.dev)
+- **Official Website:** [divyesh-portfolio-phi.vercel.app](https://divyesh-portfolio-phi.vercel.app)
 - **GitHub:** [@Divyezh](https://github.com/Divyezh)
 - **LinkedIn:** [Divyesh Soni](https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/)
 - **Instagram:** [@divyesh.gym](https://www.instagram.com/divyesh.gym/?hl=en)
