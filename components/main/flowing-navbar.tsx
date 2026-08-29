@@ -104,10 +104,10 @@ export default function FlowingNavbar() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 shadow-[0_0_15px_rgba(230,98,119,0.35)] transition-all duration-300"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 shadow-[0_0_15px_rgba(230,98,119,0.35)] transition-all duration-300"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Connect</span>
+            <span className="hidden sm:inline">Connect</span>
           </a>
 
           {/* Mobile Menu Button */}
