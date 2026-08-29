@@ -13,10 +13,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://divyesh-portfolio-phi.vercel.app"),
-  title: "Divyesh Soni | Full Stack Software Engineer & AI Developer",
+  title: "Divyesh Soni | Portfolio - Full Stack Software Engineer & AI Developer",
   description: "Portfolio of Divyesh Soni, a Full Stack Developer & AI/SaaS Builder from Ahmedabad, India. Specializing in Next.js, React, Node.js, and generative AI products.",
   keywords: [
     "Divyesh Soni", 
+    "Divyesh Portfolio",
+    "Divyesh Soni Portfolio",
+    "Divyesh Soni Dev",
+    "Divyesh Soni Website",
     "Software Engineer", 
     "Full Stack Developer", 
     "React Developer", 
