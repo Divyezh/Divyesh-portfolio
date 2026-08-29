@@ -11,7 +11,7 @@ export default function ClientRoot({ children }: { children: React.ReactNode }) 
   return (
     <>
       <StarsCanvas />
-      <div className="relative z-10 w-full min-h-screen">
+      <div className="relative z-10 w-full min-h-screen overflow-x-hidden">
         {children}
       </div>
     </>

@@ -6,7 +6,7 @@ import ParticleSphereAnimation from "@/components/ui/orbiting-circles-02-utils/p
 
 const orbits = [
   {
-    size: "w-110 h-110 md:w-180 md:h-180",
+    size: "w-64 h-64 sm:w-110 sm:h-110 md:w-180 md:h-180",
     duration: 20,
     icons: [
       { src: "/assets/react-svgrepo-com.svg", alt: "React.js", angle: -60 },
@@ -15,7 +15,7 @@ const orbits = [
     ],
   },
   {
-    size: "w-150 h-150 md:w-220 md:h-220",
+    size: "w-80 h-80 sm:w-150 sm:h-150 md:w-220 md:h-220",
     duration: 26,
     icons: [
       { src: "/assets/framer-black-icon.svg", alt: "Framer Motion", angle: -90 },
@@ -24,7 +24,7 @@ const orbits = [
     ],
   },
   {
-    size: "w-180 h-180 md:w-265 md:h-265",
+    size: "w-96 h-96 sm:w-180 sm:h-180 md:w-265 md:h-265",
     duration: 32,
     icons: [
       { src: "/assets/mongodb-icon.svg", alt: "MongoDB", angle: -60 },
@@ -37,7 +37,7 @@ const orbits = [
 
 export default function OrbitingCirclesGlobeDemo() {
   return (
-    <div className="relative w-full h-110 md:h-160 overflow-hidden flex justify-center">
+    <div className="relative w-full h-64 sm:h-110 md:h-160 overflow-hidden flex justify-center">
       <style>{`
         @keyframes orbit-cw {
           from { transform: rotate(var(--start-angle)) }
@@ -58,7 +58,7 @@ export default function OrbitingCirclesGlobeDemo() {
       `}</style>
 
       {/* Center particle globe */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-75 md:w-145 z-10">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-40 sm:w-75 md:w-145 z-10">
         <ParticleSphereAnimation />
       </div>
 

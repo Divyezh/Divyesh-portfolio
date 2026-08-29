@@ -46,7 +46,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative flex flex-col items-center justify-center pt-24 pb-28 px-4 md:px-8 max-w-7xl mx-auto w-full z-20"
+      className="relative flex flex-col items-center justify-center pt-24 pb-28 px-4 md:px-8 max-w-7xl mx-auto w-full z-20 overflow-hidden"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none -z-10" />
 

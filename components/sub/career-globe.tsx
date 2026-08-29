@@ -115,7 +115,7 @@ export default function CareerGlobe() {
   return (
     <div ref={ref} className="relative w-full h-[600px] flex items-center justify-center">
       <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <div className="w-[400px] h-[400px] md:w-[500px] md:h-[500px] relative">
+        <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] relative">
           {step >= 1 && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -190,7 +190,7 @@ export default function CareerGlobe() {
                 initial={{ opacity: 0, x: -20 }} 
                 animate={{ opacity: 1, x: 0, y: [-10, 10, -10] }}
                 transition={{ opacity: { duration: 0.5 }, y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute top-10 -left-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                className="hidden sm:block absolute top-10 -left-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="text-sm font-semibold text-white">Frontend Engineer</div>
                 <div className="text-xs text-green-400">98% Match</div>
@@ -200,7 +200,7 @@ export default function CareerGlobe() {
                 initial={{ opacity: 0, x: 20 }} 
                 animate={{ opacity: 1, x: 0, y: [10, -10, 10] }}
                 transition={{ opacity: { duration: 0.5 }, y: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute top-32 -right-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                className="hidden sm:block absolute top-32 -right-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="text-sm font-semibold text-white">React Developer</div>
                 <div className="text-xs text-green-400">95% Match</div>
@@ -210,7 +210,7 @@ export default function CareerGlobe() {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: [-10, 10, -10] }}
                 transition={{ opacity: { duration: 0.5 }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
-                className="absolute bottom-10 left-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                className="hidden sm:block absolute bottom-10 left-10 z-30 bg-[#1a0e16]/80 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="text-sm font-semibold text-white">Next.js Developer</div>
                 <div className="text-xs text-green-400">99% Match</div>
@@ -225,7 +225,7 @@ export default function CareerGlobe() {
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute z-40 bg-[#1a0e16]/95 backdrop-blur-2xl border border-purple-500/30 rounded-2xl p-6 shadow-[0_0_50px_rgba(230,98,119,0.25)] max-w-[320px] w-full"
+          className="absolute z-40 bg-[#1a0e16]/95 backdrop-blur-2xl border border-purple-500/30 rounded-2xl p-6 shadow-[0_0_50px_rgba(230,98,119,0.25)] w-[90%] max-w-[320px]"
         >
           <div className="text-center border-b border-white/10 pb-4 mb-4">
             <div className="text-xs text-purple-400 tracking-widest font-semibold uppercase mb-1">AI Analysis Complete</div>
