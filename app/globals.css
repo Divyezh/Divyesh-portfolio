@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cedarville+Cursive&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
+@import "lenis/dist/lenis.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -113,8 +114,25 @@ body {
   background: rgba(230, 98, 119, 0.4);
 }
 
-html {
-  scroll-behavior: smooth;
+/* Lenis Smooth Scroll Core Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 /* Skill icon marquee */
@@ -129,6 +147,15 @@ html {
 }
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Continuous slow rotation for circular button ring */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spinSlow 18s linear infinite;
 }
 
 /* GPU Hardware Acceleration & Layer Promotion */

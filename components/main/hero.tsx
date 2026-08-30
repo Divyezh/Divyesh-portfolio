@@ -8,7 +8,7 @@ export default function Hero() {
   useEffect(() => setMounted(true), [])
 
   return (
-    <div className="relative flex flex-col h-full w-full min-h-[95vh] bg-[#0e070c] overflow-hidden" id="about-me">
+    <div className="relative flex flex-col h-screen min-h-[100dvh] w-full bg-[#0e070c] overflow-hidden" id="about-me">
       {/* VIGNETTE EFFECT */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"

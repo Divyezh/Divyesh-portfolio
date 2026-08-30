@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# root media copies
+/Animating_2D_character_hand_motion_202608301046.mp4
