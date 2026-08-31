@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cedarville+Cursive&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
+/* Google Fonts removed — loaded via next/font in layout.tsx (non-blocking, font-display: swap) */
+/* Geist font (Vercel) is not in next/font/google, so it's loaded here with display=swap */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
 @import "lenis/dist/lenis.css";
 @tailwind base;
 @tailwind components;
@@ -17,10 +19,20 @@ body {
   color: #f1f5f9;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
+  /* Improve touch scroll performance */
+  touch-action: pan-y;
+  /* Prevent text size inflation on orientation change */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
+/* Font-family helpers using next/font CSS variables */
+.font-geist { font-family: var(--font-geist), system-ui, sans-serif; }
+.font-anton  { font-family: var(--font-anton), sans-serif; }
+.font-bebas  { font-family: var(--font-bebas), sans-serif; }
+
 .cursive {
-  font-family: "Cedarville Cursive", cursive;
+  font-family: var(--font-cursive), "Cedarville Cursive", cursive;
 }
 
 /* Glassmorphism Cards with 1px Highlight Refraction */
@@ -184,6 +196,27 @@ html.lenis, html.lenis body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ── MOBILE / TOUCH DEVICE PERFORMANCE OPTIMIZATIONS ── */
+/* Disables expensive GPU composite effects on touch (phone/tablet) devices. */
+@media (pointer: coarse) {
+  /* Remove backdrop-filter — fallback to opaque background */
+  .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(26, 14, 22, 0.92);
+  }
+
+  .Welcome-box {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(230, 98, 119, 0.12);
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: none;
   }
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { Cpu, Zap, Code2, Layers, ArrowRight } from 'lucide-react'
 
@@ -9,6 +9,14 @@ export default function CharacterScrollSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const targetTimeRef = useRef<number>(0)
   const animFrameRef = useRef<number | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile on mount
+  useEffect(() => {
+    const mobile =
+      window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768
+    setIsMobile(mobile)
+  }, [])
 
   // Scroll Progress Tracking across sticky 300vh section
   const { scrollYProgress } = useScroll({
@@ -23,8 +31,10 @@ export default function CharacterScrollSection() {
     restDelta: 0.0001,
   })
 
-  // Synchronize Video currentTime with scroll progress (0 to 1)
+  // Synchronize Video currentTime with scroll progress — desktop only
+  // Mobile: video scrubbing is unreliable and kills performance
   useEffect(() => {
+    if (isMobile) return
     const video = videoRef.current
     if (!video) return
 
@@ -42,7 +52,6 @@ export default function CharacterScrollSection() {
 
     const unsubscribe = smoothProgress.on('change', (progress) => {
       if (video && video.duration) {
-        // Video finger-motion scrubs dynamically as you scroll
         targetTimeRef.current = Math.min(
           video.duration - 0.04,
           Math.max(0, video.duration * progress)
@@ -54,9 +63,9 @@ export default function CharacterScrollSection() {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current)
       unsubscribe()
     }
-  }, [smoothProgress])
+  }, [smoothProgress, isMobile])
 
-  // Direct Horizontal Scroll Translation (0 to 1 progress maps 0% to -80% horizontal offset)
+  // Direct Horizontal Scroll Translation
   const horizontalX = useTransform(smoothProgress, [0, 1], ['0%', '-80%'])
   const progressWidth = useTransform(smoothProgress, [0, 1], ['0%', '100%'])
 
@@ -67,17 +76,28 @@ export default function CharacterScrollSection() {
     >
       {/* STICKY FULL-SCREEN VIEWPORT CONTAINER */}
       <div className="sticky top-0 h-screen w-screen overflow-hidden flex items-center justify-center">
-        
-        {/* 1. FULL-PAGE COVER VIDEO BACKDROP */}
+
+        {/* 1. FULL-PAGE COVER VIDEO BACKDROP (desktop) / GRADIENT BACKDROP (mobile) */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-          <video
-            ref={videoRef}
-            src="/Animating_2D_character_hand_motion_202608301046.mp4"
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover object-center"
-          />
+          {isMobile ? (
+            /* Mobile: static gradient — no video download/scrub overhead */
+            <div
+              className="w-full h-full"
+              style={{
+                background:
+                  'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(230,98,119,0.18) 0%, rgba(14,7,12,0.95) 70%), #0e070c',
+              }}
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              src="/Animating_2D_character_hand_motion_202608301046.mp4"
+              muted
+              playsInline
+              preload="metadata"   // Only load duration/dimensions — not the full file
+              className="w-full h-full object-cover object-center"
+            />
+          )}
           {/* Subtle Ambient Vignette Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0e070c] via-transparent to-[#0e070c]/60 pointer-events-none" />
         </div>
@@ -92,14 +112,14 @@ export default function CharacterScrollSection() {
             <div className="w-[300px] sm:w-[380px] p-6 sm:p-8 rounded-3xl glass-card border border-[#E66277]/60 shadow-[0_20px_60px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between shrink-0">
               <div>
                 <span className="text-xs font-mono font-bold text-[#FFC59E] uppercase tracking-widest flex items-center gap-2 mb-3">
-                  <ArrowRight className="w-4 h-4 text-[#E66277] animate-pulse" />
+                  <ArrowRight className="w-4 h-4 text-[#E66277]" />
                   HORIZONTAL SCROLL TRACK
                 </span>
                 <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
                   Interactive Telemetry
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 font-mono leading-relaxed">
-                  Scroll down to slide cards horizontally across the 2D character video backdrop.
+                  Scroll down to slide cards horizontally across the backdrop.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-[#E66277] font-bold">

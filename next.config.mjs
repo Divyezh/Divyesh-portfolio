@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: false,
+  compress: true,                // Enable gzip/brotli compression
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,6 +12,8 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    formats: ['image/avif', 'image/webp'],  // Modern image formats
+    minimumCacheTTL: 86400,                 // 24h image cache
   },
   webpack: (config) => {
     config.ignoreWarnings = [
@@ -24,4 +27,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-

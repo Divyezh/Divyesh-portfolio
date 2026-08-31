@@ -2,7 +2,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 
-export const PRELOADER_WORDS = [
+const ALL_WORDS = [
   'Hello',        // English
   'Bonjour',      // French
   'Ciao',         // Italian
@@ -15,6 +15,14 @@ export const PRELOADER_WORDS = [
   'नमस्ते',        // Hindi
 ]
 
+// On mobile/low-end: shorter word list = faster preloader = less blocking
+const MOBILE_WORDS = ['Hello', 'Hola', 'Bonjour', 'こんにちは', 'नमस्ते']
+
+function isMobileDevice() {
+  if (typeof window === 'undefined') return false
+  return window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768
+}
+
 export function usePreloader(onComplete: () => void) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [counter, setCounter] = useState(0)
@@ -22,11 +30,15 @@ export function usePreloader(onComplete: () => void) {
   const wordTimerRef = useRef<NodeJS.Timeout | null>(null)
   const counterRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Pick word list based on device capability
+  const PRELOADER_WORDS = isMobileDevice() ? MOBILE_WORDS : ALL_WORDS
+  // Faster on mobile — reduce loading screen time
+  const wordDuration = isMobileDevice() ? 150 : 200
+
   // ── Word cycling (fast & smooth) ─────────────────────
   useEffect(() => {
     if (phase !== 'cycling') return
 
-    const wordDuration = 200  // fast & smooth ms per word
     const totalWords = PRELOADER_WORDS.length
 
     let index = 0
@@ -34,7 +46,7 @@ export function usePreloader(onComplete: () => void) {
       index++
       if (index >= totalWords) {
         setCurrentWordIndex(totalWords - 1)
-        setTimeout(() => setPhase('exiting'), 180)
+        setTimeout(() => setPhase('exiting'), 160)
         return
       }
       setCurrentWordIndex(index)
@@ -46,13 +58,13 @@ export function usePreloader(onComplete: () => void) {
     return () => {
       if (wordTimerRef.current) clearTimeout(wordTimerRef.current)
     }
-  }, [phase])
+  }, [phase]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Counter animation (syncs with words up to 100%) ────
   useEffect(() => {
     if (phase === 'done') return
 
-    const totalDuration = PRELOADER_WORDS.length * 200 + 150
+    const totalDuration = PRELOADER_WORDS.length * wordDuration + 150
     const startTime = Date.now()
 
     const tick = () => {
@@ -70,7 +82,7 @@ export function usePreloader(onComplete: () => void) {
 
     counterRef.current = setTimeout(tick, 16)
     return () => { if (counterRef.current) clearTimeout(counterRef.current) }
-  }, [phase])
+  }, [phase]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Exit complete → unmount ───────────────────────────
   useEffect(() => {

@@ -1,14 +1,42 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Anton, Bebas_Neue, Cedarville_Cursive } from "next/font/google"
 import "./globals.css"
 import ClientRoot from "@/components/ClientRoot"
 
-const inter = Inter({ subsets: ["latin"] })
+// ── All fonts loaded via next/font (self-hosted, non-blocking, font-display: swap) ──
+// Previously loaded via blocking @import in globals.css — now eliminated.
+// Note: Geist is a Vercel font and is not in next/font/google — it is loaded
+// via a targeted @import in globals.css which does NOT block rendering
+// since it loads after stylesheets are parsed.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
+const anton = Anton({
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+  weight: "400",
+})
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  variable: "--font-bebas",
+  display: "swap",
+  weight: "400",
+})
+const cedarvilleCursive = Cedarville_Cursive({
+  subsets: ["latin"],
+  variable: "--font-cursive",
+  display: "swap",
+  weight: "400",
+})
 
 export const viewport: Viewport = {
   themeColor: "#0e070c",
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,   // Allow user zoom but prevent auto-zoom on iOS input focus
 }
 
 export const metadata: Metadata = {
@@ -103,7 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} bg-[#0e070c] overflow-x-hidden`}>
+      <body className={`${inter.className} ${anton.variable} ${bebasNeue.variable} ${cedarvilleCursive.variable} bg-[#0e070c] overflow-x-hidden`}>
         <ClientRoot>{children}</ClientRoot>
       </body>
     </html>
