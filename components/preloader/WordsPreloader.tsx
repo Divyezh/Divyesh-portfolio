@@ -1,113 +1,73 @@
 // components/preloader/WordsPreloader.tsx
 'use client'
 import { motion, AnimatePresence } from 'framer-motion'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { usePreloader, PRELOADER_WORDS } from './usePreloader'
+import { usePreloader } from './usePreloader'
 import './preloader.css'
 
-// ── CURVED PATH MOTION VARIANTS ──────────────────────────
-// This is the KEY to the Skiper8 feel.
-// Words don't just slide up/down — they travel along a
-// CURVED arc. We simulate this using:
-//   x: a horizontal offset that creates the curve feel
-//   y: vertical travel
-//   rotate: slight tilt during travel
-//   skewX: stretch during motion (kinetic feel)
-//
-// The entering word comes from BOTTOM-RIGHT → CENTER
-// The exiting word goes from CENTER → TOP-LEFT
-// Combined this creates the "rolling along a curve" effect.
-
+// ── FAST & SLIM WORD VARIANTS ──────────────────────────
 const wordVariants = {
-  // Word is about to enter — starts bottom-right, off-screen
   initial: {
-    y: 80,
-    x: 40,
+    y: 60,
+    x: 20,
     opacity: 0,
-    rotate: 8,
-    skewX: '6deg',
-    filter: 'blur(4px)',
+    rotate: 4,
+    filter: 'blur(6px)',
   },
-
-  // Word is in CENTER — fully visible, settled
   animate: {
     y: 0,
     x: 0,
     opacity: 1,
     rotate: 0,
-    skewX: '0deg',
     filter: 'blur(0px)',
     transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1] as const,  // Skiper8 signature easing
+      duration: 0.32,
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
-
-  // Word exits — travels up and to the left, curves away
   exit: {
-    y: -80,
-    x: -40,
+    y: -60,
+    x: -20,
     opacity: 0,
-    rotate: -8,
-    skewX: '-6deg',
-    filter: 'blur(4px)',
+    rotate: -4,
+    filter: 'blur(6px)',
     transition: {
-      duration: 0.38,
-      ease: [0.64, 0, 0.78, 0] as const,  // aggressive ease-in on exit
+      duration: 0.25,
+      ease: [0.7, 0, 0.84, 0] as const,
     },
   },
 }
 
 // ── PANEL WIPE VARIANTS ───────────────────────────────────
-// Two panels sweep UP off the screen after words finish.
-// Each panel is full-width, stacked, with a curved bottom.
 const panelVariants = {
   visible: { y: '0%' },
   exit: (delay: number) => ({
     y: '-102%',
     transition: {
-      duration: 0.6,
-      ease: [0.76, 0, 0.24, 1] as const,  // very aggressive ease for cinematic wipe
+      duration: 0.55,
+      ease: [0.76, 0, 0.24, 1] as const,
       delay,
     },
   }),
 }
 
-// ── CONTAINER VARIANTS ────────────────────────────────────
 const containerVariants = {
   visible: { opacity: 1 },
   exit: {
-    opacity: 1,  // container stays visible — panels handle the reveal
-    transition: { duration: 0, delay: 1.1 },
-  },
-}
-
-// ── SITE REVEAL VARIANTS ──────────────────────────────────
-// The site content underneath appears after preloader exits
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const siteVariants = {
-  hidden: { opacity: 0 },
-  visible: {
     opacity: 1,
-    transition: { duration: 0.6, ease: 'easeOut', delay: 0.1 },
+    transition: { duration: 0, delay: 0.8 },
   },
 }
 
-// ── COMPONENT ─────────────────────────────────────────────
 interface WordsPreloaderProps {
   onComplete?: () => void
 }
 
 export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { word, wordIndex, isLastWord, counter, phase } =
-    usePreloader(() => onComplete?.())
-
+  const { word, isLastWord, counter, phase } = usePreloader(() => onComplete?.())
   const isExiting = phase === 'exiting'
 
   return (
     <>
-      {/* ── PRELOADER OVERLAY ─────────────────────────── */}
       <AnimatePresence mode="wait">
         {phase !== 'done' && (
           <motion.div
@@ -119,12 +79,13 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
             style={{
               position: 'fixed',
               inset: 0,
-              zIndex: 9999,
+              zIndex: 99999,
               overflow: 'hidden',
               pointerEvents: 'all',
+              backgroundColor: '#0e070c',
             }}
           >
-            {/* ── PANEL 1 (top half) ──────────────────── */}
+            {/* ── TOP & BOTTOM CURVED EXIT PANELS ── */}
             <motion.div
               custom={0}
               variants={panelVariants}
@@ -137,14 +98,13 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
                 left: 0,
                 right: 0,
                 height: '52%',
-                background: '#0e070c',   /* your portfolio bg color */
+                background: '#0e070c',
                 zIndex: 2,
               }}
             />
 
-            {/* ── PANEL 2 (bottom half) ───────────────── */}
             <motion.div
-              custom={0.12}
+              custom={0.08}
               variants={panelVariants}
               initial="visible"
               animate={isExiting ? 'exit' : 'visible'}
@@ -154,13 +114,13 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: '52%',          /* slight overlap at center = no gap */
+                height: '52%',
                 background: '#0e070c',
                 zIndex: 2,
               }}
             />
 
-            {/* ── FULL BACKGROUND (behind panels) ───────── */}
+            {/* ── FULL BACKGROUND MASK ── */}
             <div style={{
               position: 'absolute',
               inset: 0,
@@ -168,78 +128,71 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
               zIndex: 1,
             }} />
 
-            {/* ── WORD DISPLAY ────────────────────────── */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 3,
-              overflow: 'hidden',
-            }}>
+            {/* ── PINK RADIAL LIGHT AURA BEHIND THE TEXT ── */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[520px] sm:h-[520px] rounded-full bg-[#E66277]/25 blur-[110px] pointer-events-none z-[3] animate-pulse" />
+
+            {/* ── ULTRA-SLIM WORD DISPLAY WITH PINK DOT ACCENT ── */}
+            <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden px-4">
               <AnimatePresence mode="wait">
-                <motion.span
-                  key={word}                    // key change triggers anim
+                <motion.div
+                  key={word}
                   variants={wordVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="preloader-word"
-                  style={{
-                    fontSize: 'clamp(48px, 8vw, 96px)',
-                    fontWeight: 700,
-                    fontFamily: '"Inter", system-ui, sans-serif',
-                    letterSpacing: '-0.03em',
-                    lineHeight: 1,
-                    // Last word (name) gets purple gradient
-                    ...(isLastWord
-                      ? {
-                          background: 'linear-gradient(90deg, #FFC59E, #FF9F9A, #E66277)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          backgroundClip: 'text',
-                          filter: 'drop-shadow(0 0 15px rgba(230, 98, 119, 0.6))',
-                        }
-                      : {
-                          color: '#ffffff',
-                        }),
-                  }}
+                  className="flex items-center gap-3 sm:gap-5"
                 >
-                  {word}
-                </motion.span>
+                  {/* Pink Accent Dot */}
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#E66277] shadow-[0_0_12px_#E66277]" />
+
+                  {/* Ultra-Slim Word Typography */}
+                  <span
+                    className="preloader-word"
+                    style={{
+                      fontSize: 'clamp(48px, 9vw, 110px)',
+                      fontWeight: 200, // Ultra-slim light font
+                      fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1,
+                      color: isLastWord ? '#FFC59E' : '#FFFFFF',
+                      ...(isLastWord && {
+                        background: 'linear-gradient(90deg, #FFC59E, #FF9F9A, #E66277)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        filter: 'drop-shadow(0 0 20px rgba(230, 98, 119, 0.7))',
+                      }),
+                    }}
+                  >
+                    {word}
+                  </span>
+                </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* ── COUNTER (bottom-right) ───────────────── */}
+            {/* ── HUGE ULTRA-THIN COUNTER (BOTTOM-RIGHT) ── */}
             <motion.div
-              className="preloader-counter"
-              style={{ zIndex: 4 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
+              className="fixed bottom-6 right-8 sm:bottom-10 sm:right-12 z-[10001] flex items-baseline font-extralight select-none pointer-events-none"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.4 }}
             >
-              {String(counter).padStart(2, '0')}%
+              <span className="text-white text-6xl sm:text-8xl lg:text-9xl font-extralight tracking-tight leading-none">
+                {counter}
+              </span>
+              <span className="text-[#E66277] text-2xl sm:text-4xl lg:text-5xl font-light ml-1 sm:ml-2">
+                %
+              </span>
             </motion.div>
 
-            {/* ── BOTTOM-LEFT LABEL ───────────────────── */}
+            {/* ── BOTTOM-LEFT LABEL WITH PINK PULSE DOT ── */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              style={{
-                position: 'fixed',
-                bottom: 32,
-                left: 40,
-                zIndex: 4,
-                fontFamily: '"JetBrains Mono", monospace',
-                fontSize: 11,
-                color: 'rgba(255,255,255,0.25)',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-              }}
+              transition={{ delay: 0.15, duration: 0.4 }}
+              className="fixed bottom-8 left-8 sm:bottom-12 sm:left-12 z-[10001] flex items-center gap-2.5 font-mono text-[11px] sm:text-xs text-slate-400 tracking-[0.22em] uppercase select-none pointer-events-none"
             >
-              Loading Portfolio
+              <span className="w-2 h-2 rounded-full bg-[#E66277] shadow-[0_0_10px_#E66277] animate-ping" />
+              <span>LOADING EXPERIENCE</span>
             </motion.div>
           </motion.div>
         )}
