@@ -30,7 +30,7 @@ export default function HeroContent() {
       >
         <svg
           viewBox="0 0 1000 800"
-          preserveAspectRatio="none"
+          preserveAspectRatio="xMidYMid slice"
           className="w-full h-full absolute inset-0"
         >
           <defs>

@@ -38,11 +38,11 @@ export default function CareerTerminal() {
   return (
     <motion.div 
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.95, y: 30 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative w-full max-w-[600px] rounded-2xl overflow-hidden border border-purple-500/30 bg-[#1a0e16]/60 backdrop-blur-xl shadow-[0_0_40px_rgba(230,98,119,0.15)] group"
+      className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[460px] rounded-2xl overflow-hidden border border-[#E66277]/40 bg-[#130812]/90 backdrop-blur-xl shadow-[0_0_50px_rgba(230,98,119,0.25)] group"
     >
       {/* Noise Texture */}
       <div 
@@ -51,19 +51,16 @@ export default function CareerTerminal() {
       />
       
       {/* Top Bar */}
-      <div className="relative z-10 flex items-center px-4 py-3 border-b border-white/10 bg-black/20">
-        <div className="flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500/80" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <div className="w-3 h-3 rounded-full bg-green-500/80" />
-        </div>
-        <div className="mx-auto text-xs font-mono text-gray-400 uppercase tracking-widest">
-          AI_CAREER_RADAR.EXE
+      <div className="relative z-10 flex items-center px-4 py-2 border-b border-white/10 bg-black/40">
+        <div className="flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
         </div>
       </div>
 
       {/* Terminal Content */}
-      <div className="relative z-10 p-6 font-mono text-sm md:text-base text-gray-300 h-[450px] overflow-y-auto custom-scrollbar flex flex-col gap-2">
+      <div className="relative z-10 p-3.5 sm:p-5 font-mono text-[11px] sm:text-xs md:text-sm text-gray-300 h-[280px] sm:h-[330px] md:h-[360px] overflow-y-auto custom-scrollbar flex flex-col gap-1.5 sm:gap-2">
         
         {step >= 1 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
