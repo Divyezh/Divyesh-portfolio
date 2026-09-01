@@ -3,102 +3,113 @@
 import { useState, useEffect, useRef } from 'react'
 
 const ALL_WORDS = [
-  'Hello',        // English
-  'Bonjour',      // French
-  'Ciao',         // Italian
-  'Olá',          // Portuguese
-  'Hola',         // Spanish
-  'Hallo',        // German
-  'Hallå',        // Swedish
-  'こんにちは',     // Japanese
-  'مرحبا',        // Arabic
-  'नमस्ते',        // Hindi
+  'Hello',      // English
+  'Bonjour',    // French
+  'Ciao',       // Italian
+  'Olá',        // Portuguese
+  'Hola',       // Spanish
+  'Hallo',      // German
+  'Hallå',      // Swedish
+  'こんにちは',  // Japanese
+  'مرحبا',      // Arabic
+  'नमस्ते',     // Hindi
 ]
 
-// On mobile/low-end: shorter word list = faster preloader = less blocking
+// Shorter list on mobile — quicker, less jank
 const MOBILE_WORDS = ['Hello', 'Hola', 'Bonjour', 'こんにちは', 'नमस्ते']
 
-function isMobileDevice() {
+function isMobile() {
   if (typeof window === 'undefined') return false
   return window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768
 }
 
 export function usePreloader(onComplete: () => void) {
+  // Stable device check — captured once on mount, never re-evaluated mid-render
+  const mobile = useRef(false)
+  const words = useRef<string[]>(ALL_WORDS)
+  const wordDuration = useRef(200)
+
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [counter, setCounter] = useState(0)
   const [phase, setPhase] = useState<'cycling' | 'exiting' | 'done'>('cycling')
-  const wordTimerRef = useRef<NodeJS.Timeout | null>(null)
-  const counterRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Pick word list based on device capability
-  const PRELOADER_WORDS = isMobileDevice() ? MOBILE_WORDS : ALL_WORDS
-  // Faster on mobile — reduce loading screen time
-  const wordDuration = isMobileDevice() ? 150 : 200
+  // ── One-time device capability detection ────────────────
+  useEffect(() => {
+    mobile.current = isMobile()
+    words.current = mobile.current ? MOBILE_WORDS : ALL_WORDS
+    wordDuration.current = mobile.current ? 160 : 200
+  }, [])
 
-  // ── Word cycling (fast & smooth) ─────────────────────
+  // ── Single RAF loop: advances words + keeps counter in lock-step ──
   useEffect(() => {
     if (phase !== 'cycling') return
 
-    const totalWords = PRELOADER_WORDS.length
+    const WORDS = words.current
+    const WD = wordDuration.current
+    const totalWords = WORDS.length
 
-    let index = 0
-    const cycleWords = () => {
-      index++
-      if (index >= totalWords) {
-        setCurrentWordIndex(totalWords - 1)
-        setTimeout(() => setPhase('exiting'), 160)
-        return
-      }
-      setCurrentWordIndex(index)
-      wordTimerRef.current = setTimeout(cycleWords, wordDuration)
-    }
+    let wordIndex = 0
+    let lastWordAt = performance.now()
 
-    wordTimerRef.current = setTimeout(cycleWords, wordDuration)
+    // Counter target per word — evenly distributed 0→99 across words,
+    // 100 is reserved for the moment the last word locks in.
+    const counterAtWord = (idx: number) =>
+      idx >= totalWords - 1 ? 100 : Math.round((idx / (totalWords - 1)) * 99)
 
-    return () => {
-      if (wordTimerRef.current) clearTimeout(wordTimerRef.current)
-    }
-  }, [phase]) // eslint-disable-line react-hooks/exhaustive-deps
+    let rafId: number
+    let exiting = false
 
-  // ── Counter animation (syncs with words up to 100%) ────
-  useEffect(() => {
-    if (phase === 'done') return
+    const loop = (now: number) => {
+      if (exiting) return
 
-    const totalDuration = PRELOADER_WORDS.length * wordDuration + 150
-    const startTime = Date.now()
+      const elapsed = now - lastWordAt
 
-    const tick = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / totalDuration, 1)
-      const count = Math.floor(progress * 100)
-      setCounter(count)
+      if (elapsed >= WD) {
+        wordIndex = Math.min(wordIndex + 1, totalWords - 1)
+        lastWordAt = now
 
-      if (count < 100) {
-        counterRef.current = setTimeout(tick, 16)
+        setCurrentWordIndex(wordIndex)
+        setCounter(counterAtWord(wordIndex))
+
+        if (wordIndex >= totalWords - 1 && !exiting) {
+          exiting = true
+          // Small pause so the user sees 100% + last word before exit
+          setTimeout(() => setPhase('exiting'), 200)
+          return
+        }
       } else {
-        setCounter(100)
+        // Interpolate counter smoothly between word milestones
+        const prevTarget = counterAtWord(wordIndex)
+        const nextTarget = counterAtWord(Math.min(wordIndex + 1, totalWords - 1))
+        const t = Math.min(elapsed / WD, 1)
+        // ease-out so counter slows slightly before next word
+        const easedT = 1 - Math.pow(1 - t, 2)
+        setCounter(Math.round(prevTarget + (nextTarget - prevTarget) * easedT))
       }
+
+      rafId = requestAnimationFrame(loop)
     }
 
-    counterRef.current = setTimeout(tick, 16)
-    return () => { if (counterRef.current) clearTimeout(counterRef.current) }
+    rafId = requestAnimationFrame(loop)
+
+    return () => cancelAnimationFrame(rafId)
   }, [phase]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── Exit complete → unmount ───────────────────────────
+  // ── Exit → unmount ───────────────────────────────────────
   useEffect(() => {
     if (phase === 'exiting') {
-      const exitTimer = setTimeout(() => {
+      const t = setTimeout(() => {
         setPhase('done')
         onComplete()
-      }, 600)
-      return () => clearTimeout(exitTimer)
+      }, 620)
+      return () => clearTimeout(t)
     }
   }, [phase, onComplete])
 
   return {
-    word: PRELOADER_WORDS[currentWordIndex],
+    word: words.current[currentWordIndex] ?? ALL_WORDS[currentWordIndex],
     wordIndex: currentWordIndex,
-    isLastWord: currentWordIndex === PRELOADER_WORDS.length - 1,
+    isLastWord: currentWordIndex === (words.current.length || ALL_WORDS.length) - 1,
     counter,
     phase,
   }

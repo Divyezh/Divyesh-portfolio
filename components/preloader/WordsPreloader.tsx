@@ -156,12 +156,12 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
                       fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
                       letterSpacing: '-0.02em',
                       lineHeight: 1,
+                      willChange: 'transform, opacity',
                       color: isLastWord ? '#FFC59E' : '#FFFFFF',
                       ...(isLastWord && {
                         background: 'linear-gradient(90deg, #FFC59E, #FF9F9A, #E66277)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
-                        // drop-shadow kept (not blur — it's composited differently)
                         filter: 'drop-shadow(0 0 16px rgba(230, 98, 119, 0.5))',
                       }),
                     }}
@@ -178,8 +178,12 @@ export default function WordsPreloader({ onComplete }: WordsPreloaderProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.4 }}
+              style={{ willChange: 'transform, opacity' }}
             >
-              <span className="text-white text-6xl sm:text-8xl lg:text-9xl font-extralight tracking-tight leading-none">
+              <span
+                className="text-white text-6xl sm:text-8xl lg:text-9xl font-extralight tracking-tight leading-none"
+                style={{ fontVariantNumeric: 'tabular-nums', minWidth: '3ch', display: 'inline-block', textAlign: 'right' }}
+              >
                 {counter}
               </span>
               <span className="text-[#E66277] text-2xl sm:text-4xl lg:text-5xl font-light ml-1 sm:ml-2">
