@@ -8,6 +8,16 @@ export default function ClientRoot({ children }: { children: React.ReactNode }) 
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Instantly bypass preloader for search engine crawlers & SEO auditors
+    if (typeof window !== 'undefined') {
+      const ua = navigator.userAgent.toLowerCase()
+      if (/bot|crawler|spider|googlebot|bingbot|lighthouse|mediapartners-google|slurp|duckduckbot/i.test(ua)) {
+        setIsLoading(false)
+        document.body.style.overflow = ''
+        return
+      }
+    }
+
     if (isLoading) {
       document.body.style.overflow = 'hidden'
     } else {

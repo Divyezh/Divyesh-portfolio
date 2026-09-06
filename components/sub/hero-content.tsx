@@ -161,55 +161,52 @@ export default function HeroContent() {
         />
       </motion.div>
 
-      {/* 3. BOTTOM-LEFT LABEL & ROLE BLOCK */}
+      {/* 3 & 4. BOTTOM FOOTER BAR (FEATURED WORK & SOCIAL) */}
       <motion.div
         style={{ opacity: opacityFooter }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute bottom-6 sm:bottom-8 left-4 sm:left-8 md:left-12 z-20 flex flex-col items-start"
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-3 md:gap-6 pointer-events-none"
       >
-        <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
-          FEATURED WORK
-        </span>
-        <div className="text-xs sm:text-sm font-bold text-white tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 sm:gap-2 flex-wrap">
-          <span>Frontend Developer</span>
-          <span className="text-[#E66277] font-normal">•</span>
-          <span>React &amp; Next.js</span>
-          <span className="text-[#E66277] font-normal">•</span>
-          <span>UI/UX Engineer</span>
+        {/* Left: Featured Work / Roles */}
+        <div className="flex flex-col items-start pointer-events-auto max-w-full md:max-w-[70%]">
+          <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+            FEATURED WORK
+          </span>
+          <div className="text-xs sm:text-sm font-bold text-white tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <span>Frontend Developer</span>
+            <span className="text-[#E66277] font-normal">•</span>
+            <span>React &amp; Next.js</span>
+            <span className="text-[#E66277] font-normal">•</span>
+            <span>UI/UX Engineer</span>
+          </div>
         </div>
-      </motion.div>
 
-      {/* 4. BOTTOM-RIGHT SOCIAL BLOCK */}
-      <motion.div
-        style={{ opacity: opacityFooter }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute bottom-6 sm:bottom-8 right-4 sm:right-8 md:right-12 z-20 flex flex-col items-end text-right"
-      >
-        <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
-          Social
-        </span>
-        <div className="text-xs sm:text-sm font-bold text-white tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 sm:gap-2">
-          <a
-            href="https://github.com/Divyezh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#FF8B9E] transition-colors"
-          >
-            GitHub
-          </a>
-          <span className="text-[#E66277] font-normal">•</span>
-          <a
-            href="https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#FF8B9E] transition-colors"
-          >
-            LinkedIn
-          </a>
+        {/* Right: Social Links */}
+        <div className="flex flex-col items-start md:items-end md:text-right pointer-events-auto shrink-0">
+          <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+            Social
+          </span>
+          <div className="text-xs sm:text-sm font-bold text-white tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 sm:gap-2">
+            <a
+              href="https://github.com/Divyezh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#FF8B9E] transition-colors py-0.5"
+            >
+              GitHub
+            </a>
+            <span className="text-[#E66277] font-normal">•</span>
+            <a
+              href="https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#FF8B9E] transition-colors py-0.5"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </motion.div>
     </div>

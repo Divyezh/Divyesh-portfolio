@@ -44,19 +44,19 @@ export const metadata: Metadata = {
   title: "Divyesh Soni | Portfolio - Full Stack Software Engineer & AI Developer",
   description: "Portfolio of Divyesh Soni, a Full Stack Developer & AI/SaaS Builder from Ahmedabad, India. Specializing in Next.js, React, Node.js, and generative AI products.",
   keywords: [
-    "Divyesh Soni", 
+    "Divyesh Soni",
     "Divyesh Portfolio",
     "Divyesh Soni Portfolio",
     "Divyesh Soni Dev",
     "Divyesh Soni Website",
-    "Software Engineer", 
-    "Full Stack Developer", 
-    "React Developer", 
-    "Next.js Developer", 
-    "AI Developer", 
-    "India", 
-    "Ahmedabad", 
-    "Portfolio", 
+    "Software Engineer",
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "AI Developer",
+    "India",
+    "Ahmedabad",
+    "Portfolio",
     "Web Developer",
     "JavaScript",
     "TypeScript",
@@ -107,20 +107,39 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Divyesh Soni",
-    "url": "https://divyesh-portfolio-phi.vercel.app",
-    "image": "https://divyesh-portfolio-phi.vercel.app/assets/portfolio.png",
-    "sameAs": [
-      "https://github.com/Divyezh",
-      "https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
-    ],
-    "jobTitle": "Full Stack Software Engineer & AI Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Freelance"
-    },
-    "description": "Full Stack Developer specializing in Next.js, React, Node.js, and generative AI products."
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://divyesh-portfolio-phi.vercel.app/#website",
+        "url": "https://divyesh-portfolio-phi.vercel.app",
+        "name": "Divyesh Soni - Full Stack Software Engineer & AI Developer",
+        "description": "Portfolio of Divyesh Soni, a Full Stack Developer & AI/SaaS Builder from Ahmedabad, India.",
+        "inLanguage": "en-US",
+      },
+      {
+        "@type": "Person",
+        "@id": "https://divyesh-portfolio-phi.vercel.app/#person",
+        "name": "Divyesh Soni",
+        "url": "https://divyesh-portfolio-phi.vercel.app",
+        "image": "https://divyesh-portfolio-phi.vercel.app/assets/portfolio.png",
+        "sameAs": [
+          "https://github.com/Divyezh",
+          "https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
+        ],
+        "jobTitle": "Full Stack Software Engineer & AI Developer",
+        "knowsAbout": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "Prisma",
+          "Tailwind CSS",
+          "Generative AI"
+        ],
+        "description": "Full Stack Developer specializing in Next.js, React, Node.js, and generative AI products."
+      }
+    ]
   }
 
   return (
