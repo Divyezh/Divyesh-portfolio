@@ -3,6 +3,7 @@
 import React, { useRef } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { ArrowRight, Sparkles } from "lucide-react"
 
 export default function HeroContent() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -12,127 +13,66 @@ export default function HeroContent() {
   })
 
   // Multi-layer 3D Parallax Scroll Transforms
-  const yBgText = useTransform(scrollYProgress, [0, 1], [0, -180])
-  const opacityBgText = useTransform(scrollYProgress, [0, 0.8], [1, 0.15])
-  const yPortrait = useTransform(scrollYProgress, [0, 1], [0, -70])
-  const scalePortrait = useTransform(scrollYProgress, [0, 1], [1, 0.94])
+  const yBgText = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const opacityBgText = useTransform(scrollYProgress, [0, 0.8], [0.35, 0.05])
+  const yPortrait = useTransform(scrollYProgress, [0, 1], [0, -60])
+  const scalePortrait = useTransform(scrollYProgress, [0, 1], [1, 0.95])
   const opacityFooter = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
     <div ref={containerRef} className="relative w-full h-full min-h-[100dvh] flex items-center justify-center overflow-hidden px-4 sm:px-8">
-      {/* 1. OVERSIZED 3D BACKGROUND WORDMARK (WITH PARALLAX SCROLL MOTION) */}
+
+      {/* ─── 1. DECREASED SIZE BG TEXT: "DIVYESH SONI" (REFINED, SUBTLE WATERMARK) ─── */}
       <motion.div
         style={{ y: yBgText, opacity: opacityBgText }}
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 0.28, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 flex items-center justify-center overflow-hidden"
       >
         <svg
-          viewBox="0 0 1000 800"
-          preserveAspectRatio="xMidYMid slice"
-          className="w-full h-full absolute inset-0"
+          viewBox="0 0 1000 600"
+          preserveAspectRatio="xMidYMid meet"
+          className="w-full max-w-[580px] h-auto absolute"
         >
           <defs>
-            {/* 3D Specular Shading Gradient */}
-            <linearGradient id="text3DGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#FF9EB1" />
-              <stop offset="25%" stopColor="#FF6B86" />
-              <stop offset="60%" stopColor="#E66277" />
-              <stop offset="100%" stopColor="#8A2338" />
+            <linearGradient id="textRefinedGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
+              <stop offset="50%" stopColor="#C7D2FE" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#6366F1" stopOpacity="0.15" />
             </linearGradient>
 
-            {/* 3D Inner Lighting Highlights */}
-            <linearGradient id="text3DLightHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#FFC59E" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="#000000" stopOpacity="0.6" />
-            </linearGradient>
-
-            {/* Organic 3D Cylinder Curve Warp Filter */}
-            <filter id="curved3DWarp" x="-20%" y="-20%" width="140%" height="140%">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.005 0.01"
-                numOctaves="2"
-                result="warpNoise"
-              />
-              <feDisplacementMap
-                in="SourceGraphic"
-                in2="warpNoise"
-                scale="15"
-                xChannelSelector="R"
-                yChannelSelector="G"
-              />
-            </filter>
-
-            {/* Deep 3D Shadow Extrusion */}
-            <filter id="extrude3DShadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="16" stdDeviation="20" floodColor="#000000" floodOpacity="0.95" />
-              <feDropShadow dx="0" dy="30" stdDeviation="40" floodColor="#70182A" floodOpacity="0.5" />
+            <filter id="softTextShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#050508" floodOpacity="0.9" />
             </filter>
           </defs>
 
-          {/* 3D BACKDROP SHADOW EXTRUSION LAYER */}
-          <g filter="url(#extrude3DShadow)">
-            {/* TOP LINE: DIVYESH (3D CYLINDER WARP) */}
-            <g filter="url(#curved3DWarp)">
-              <text
-                x="50%"
-                y="33%"
-                textAnchor="middle"
-                dominantBaseline="central"
-                fill="url(#text3DGradient)"
-                fontFamily="'Anton', 'Bebas Neue', 'Impact', sans-serif"
-                fontWeight="900"
-                fontSize="315"
-                letterSpacing="-10"
-              >
-                DIVYESH
-              </text>
-            </g>
-
-            {/* BOTTOM LINE: SONI */}
+          {/* Decreased font size to 120px with 580px max container */}
+          <g filter="url(#softTextShadow)">
             <text
               x="50%"
-              y="70%"
+              y="38%"
               textAnchor="middle"
               dominantBaseline="central"
-              fill="url(#text3DGradient)"
+              fill="url(#textRefinedGrad)"
               fontFamily="'Anton', 'Bebas Neue', 'Impact', sans-serif"
               fontWeight="900"
-              fontSize="355"
-              letterSpacing="-12"
-            >
-              SONI
-            </text>
-          </g>
-
-          {/* 3D LIGHT REFLECTION OVERLAY */}
-          <g filter="url(#curved3DWarp)" opacity="0.35" style={{ mixBlendMode: 'overlay' }}>
-            <text
-              x="50%"
-              y="33%"
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill="url(#text3DLightHighlight)"
-              fontFamily="'Anton', 'Bebas Neue', 'Impact', sans-serif"
-              fontWeight="900"
-              fontSize="315"
-              letterSpacing="-10"
+              fontSize="120"
+              letterSpacing="6"
             >
               DIVYESH
             </text>
+
             <text
               x="50%"
-              y="70%"
+              y="62%"
               textAnchor="middle"
               dominantBaseline="central"
-              fill="url(#text3DLightHighlight)"
+              fill="url(#textRefinedGrad)"
               fontFamily="'Anton', 'Bebas Neue', 'Impact', sans-serif"
               fontWeight="900"
-              fontSize="355"
-              letterSpacing="-12"
+              fontSize="120"
+              letterSpacing="6"
             >
               SONI
             </text>
@@ -140,16 +80,44 @@ export default function HeroContent() {
         </svg>
       </motion.div>
 
-      {/* 2. CENTERED FOREGROUND PORTRAIT */}
+      {/* ─── 2. LEFT ARCHITECTURAL STACKED HEADLINE (EXACT MOTIF FROM VYRO IMAGE) ─── */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden lg:flex flex-col items-start absolute left-8 sm:left-12 xl:left-20 top-1/2 -translate-y-1/2 z-20 pointer-events-none select-none"
+      >
+        <div className="flex flex-col font-sans text-4xl xl:text-5xl font-extrabold tracking-tight leading-[0.98]">
+          <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">Beyond</span>
+          <span className="text-white/85">limits</span>
+          <span className="text-white/65">beyond</span>
+          <span className="text-slate-400">depth</span>
+          <span className="text-slate-500">beyond</span>
+        </div>
+      </motion.div>
+
+      {/* ─── 3. RIGHT SUB-HEADLINE COPY (EXACT MOTIF FROM VYRO IMAGE) ─── */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden lg:flex flex-col items-start absolute right-8 sm:right-12 xl:right-20 top-[26%] z-20 pointer-events-none select-none max-w-[280px]"
+      >
+        <p className="text-xs sm:text-sm text-slate-300 font-normal leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          Next-generation full-stack architectures redefining how you see, build, and interact with the digital world.
+        </p>
+      </motion.div>
+
+      {/* ─── 4. CENTER FOREGROUND PORTRAIT (ILLUMINATED BY STUDIO BACKLIGHT) ─── */}
       <motion.div
         style={{ y: yPortrait, scale: scalePortrait }}
         initial={{ opacity: 0, y: 35, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 flex items-center justify-center h-[70vh] sm:h-[80vh] max-h-[780px] max-w-full my-auto"
+        className="relative z-10 flex items-center justify-center h-[50vh] sm:h-[65vh] md:h-[76vh] max-h-[760px] max-w-full my-auto"
       >
-        {/* Soft radial ambient glow behind portrait */}
-        <div className="absolute w-[300px] h-[300px] sm:w-[480px] sm:h-[480px] bg-[#E66277]/25 blur-[120px] rounded-full pointer-events-none -z-10" />
+        {/* Soft radial white & lavender halo directly backlighting portrait */}
+        <div className="absolute w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] md:w-[460px] md:h-[460px] bg-white/20 blur-[90px] rounded-full pointer-events-none -z-10" />
 
         <Image
           src="/assets/Divyesh.png"
@@ -161,48 +129,91 @@ export default function HeroContent() {
         />
       </motion.div>
 
-      {/* 3 & 4. BOTTOM FOOTER BAR (FEATURED WORK & SOCIAL) */}
+      {/* ─── 5. FLOATING SPEC CAPSULE CARD (BOTTOM-RIGHT, FROM VYRO IMAGE) ─── */}
+      <motion.div
+        initial={{ opacity: 0, x: 30, y: 15 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden md:flex absolute bottom-10 right-8 lg:right-16 z-20 pointer-events-auto"
+      >
+        <a
+          href="#skills"
+          className="group relative flex items-center gap-3.5 p-3.5 pr-5 rounded-2xl bg-[#090714]/85 border border-white/15 backdrop-blur-xl shadow-[0_15px_40px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.15)] hover:border-indigo-400/50 hover:scale-[1.03] transition-all duration-300"
+        >
+          {/* Circular Tech Icon Frame with Pill Badge */}
+          <div className="relative w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-indigo-400/40 transition-colors">
+            <Sparkles className="w-5 h-5 text-indigo-400" />
+            <div className="absolute inset-0 bg-indigo-500/10 blur-sm" />
+            {/* Pill tag matching $150 in the VYRO screenshot */}
+            <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-indigo-600 text-white text-[9px] font-mono font-bold shadow-sm">
+              NEW
+            </span>
+          </div>
+
+          {/* Card Copy */}
+          <div className="flex flex-col">
+            <span className="text-[10px] font-mono text-indigo-300 uppercase tracking-widest font-semibold">
+              CORE STACK
+            </span>
+            <span className="text-xs font-bold text-white tracking-tight">
+              Full Stack &amp; AI Architect
+            </span>
+            <div className="flex items-center gap-1 text-[11px] text-slate-400 group-hover:text-indigo-300 transition-colors mt-0.5">
+              <span>Explore Arsenal</span>
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </a>
+      </motion.div>
+
+      {/* ─── 6. BOTTOM FOOTER BAR (FEATURED ROLES & SOCIALS) ─── */}
       <motion.div
         style={{ opacity: opacityFooter }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-3 md:gap-6 pointer-events-none"
+        className="absolute bottom-3 sm:bottom-6 md:bottom-8 left-3 sm:left-8 md:left-12 right-3 sm:right-8 md:right-12 z-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-2.5 sm:gap-4 md:gap-6 pointer-events-none"
       >
         {/* Left: Featured Work / Roles */}
         <div className="flex flex-col items-start pointer-events-auto max-w-full md:max-w-[70%]">
-          <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
-            FEATURED WORK
+          <span className="text-[9.5px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+            TECHNICAL FOCUS
           </span>
-          <div className="text-xs sm:text-sm font-bold text-white tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 sm:gap-2 flex-wrap">
-            <span>Frontend Developer</span>
-            <span className="text-[#E66277] font-normal">•</span>
-            <span>React &amp; Next.js</span>
-            <span className="text-[#E66277] font-normal">•</span>
-            <span>UI/UX Engineer</span>
+          <div className="text-[11px] sm:text-xs md:text-sm font-bold text-white tracking-tight mt-1 flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              Frontend Engineer
+            </span>
+            <span className="text-indigo-400 font-normal hidden xs:inline">•</span>
+            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              Next.js 14 &amp; React 19
+            </span>
+            <span className="text-indigo-400 font-normal hidden xs:inline">•</span>
+            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+              Generative AI Pipelines
+            </span>
           </div>
         </div>
 
-        {/* Right: Social Links */}
+        {/* Right: Social Links (Pill Buttons) */}
         <div className="flex flex-col items-start md:items-end md:text-right pointer-events-auto shrink-0">
-          <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
-            Social
+          <span className="text-[9.5px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+            SOCIAL MATRIX
           </span>
-          <div className="text-xs sm:text-sm font-bold text-white tracking-tight mt-0.5 sm:mt-1 flex items-center gap-1.5 sm:gap-2">
+          <div className="text-[11px] sm:text-xs md:text-sm font-bold text-white tracking-tight mt-1 flex items-center gap-2">
             <a
               href="https://github.com/Divyezh"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#FF8B9E] transition-colors py-0.5"
+              className="px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-400/40 hover:text-white transition-all shadow-sm"
             >
               GitHub
             </a>
-            <span className="text-[#E66277] font-normal">•</span>
+            <span className="text-indigo-400 font-normal">•</span>
             <a
               href="https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#FF8B9E] transition-colors py-0.5"
+              className="px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-400/40 hover:text-white transition-all shadow-sm"
             >
               LinkedIn
             </a>

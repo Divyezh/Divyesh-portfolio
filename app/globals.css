@@ -7,11 +7,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #0e070c;
-  --surface: #1a0e16;
-  --surface-border: rgba(255, 255, 255, 0.08);
-  --accent: #E66277;
-  --accent-cyan: #FFC59E;
+  --background: #050508;
+  --surface: #0a0814;
+  --surface-border: rgba(255, 255, 255, 0.1);
+  --accent: #6366F1;
+  --accent-cyan: #38BDF8;
 }
 
 body {
@@ -19,14 +19,12 @@ body {
   color: #f1f5f9;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
-  /* Improve touch scroll performance */
   touch-action: pan-y;
-  /* Prevent text size inflation on orientation change */
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-/* Font-family helpers using next/font CSS variables */
+/* Font-family helpers */
 .font-geist { font-family: var(--font-geist), system-ui, sans-serif; }
 .font-anton  { font-family: var(--font-anton), sans-serif; }
 .font-bebas  { font-family: var(--font-bebas), sans-serif; }
@@ -35,13 +33,13 @@ body {
   font-family: var(--font-cursive), "Cedarville Cursive", cursive;
 }
 
-/* Glassmorphism Cards with 1px Highlight Refraction */
+/* ─── VYRO PREMIUM DARK GLASSMORPHISM ─── */
 .glass-card {
-  background: rgba(26, 14, 22, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: rgba(11, 9, 21, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 12px 40px 0 rgba(0, 0, 0, 0.6);
 }
 
 .glass-card-hover {
@@ -49,8 +47,80 @@ body {
 }
 
 .glass-card-hover:hover {
-  border-color: rgba(230, 98, 119, 0.3);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 12px 40px -10px rgba(230, 98, 119, 0.2);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 16px 50px -10px rgba(99, 102, 241, 0.25);
+}
+
+/* ─── VYRO INSPIRATION BUTTON STYLES ─── */
+.btn-pill-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 0.625rem 1.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill-primary:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-pill-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-pill-glow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #ffffff;
+  padding: 0.625rem 1.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill-glow:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+  box-shadow: 0 0 35px rgba(99, 102, 241, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px) scale(1.02);
 }
 
 /* Modern Gradient Text */
@@ -62,15 +132,15 @@ body {
 }
 
 .gradient-accent-text {
-  background: linear-gradient(135deg, #FFC59E 0%, #E66277 50%, #8F3858 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 40%, #818cf8 70%, #6366f1 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Legacy Welcome box & text for compatibility */
+/* Welcome Box & Text */
 .Welcome-text {
-  background: linear-gradient(135deg, #FFC59E 0%, #E66277 50%, #8F3858 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 50%, #818cf8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -83,9 +153,9 @@ body {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: 9999px;
-  border: 1px solid rgba(230, 98, 119, 0.25);
-  background: rgba(230, 98, 119, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
   display: flex;
   position: relative;
   width: max-content;
@@ -95,12 +165,7 @@ body {
 /* Spotlight Card Background */
 .spotlight-border {
   position: relative;
-  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(230, 98, 119, 0.12), transparent 40%);
-}
-
-/* Star and glow utilities */
-.star-amber {
-  background: radial-gradient(circle, #ffaa44 0%, transparent 70%);
+  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(99, 102, 241, 0.15), transparent 40%);
 }
 
 .scrollbar-hidden {
@@ -116,14 +181,14 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0e070c;
+  background: #050508;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(230, 98, 119, 0.4);
+  background: rgba(99, 102, 241, 0.5);
 }
 
 /* Lenis Smooth Scroll Core Styles */
@@ -147,21 +212,7 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* Skill icon marquee */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-  will-change: transform;
-  transform: translateZ(0);
-}
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Continuous slow rotation for circular button ring */
+/* Continuous slow rotation */
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
@@ -170,7 +221,7 @@ html.lenis, html.lenis body {
   animation: spinSlow 18s linear infinite;
 }
 
-/* GPU Hardware Acceleration & Layer Promotion */
+/* GPU Hardware Acceleration */
 .transform-gpu {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -181,7 +232,6 @@ html.lenis, html.lenis body {
   will-change: transform;
 }
 
-/* Content visibility optimization for low-end devices */
 @media (max-width: 768px) {
   .content-visibility-auto {
     content-visibility: auto;
@@ -189,7 +239,6 @@ html.lenis, html.lenis body {
   }
 }
 
-/* Accessibility & Low-power mode motion reduction */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
@@ -199,24 +248,20 @@ html.lenis, html.lenis body {
   }
 }
 
-/* ── MOBILE / TOUCH DEVICE PERFORMANCE OPTIMIZATIONS ── */
-/* Disables expensive GPU composite effects on touch (phone/tablet) devices. */
 @media (pointer: coarse) {
-  /* Remove backdrop-filter — fallback to opaque background */
   .glass-card {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background: rgba(26, 14, 22, 0.92);
+    background: rgba(11, 9, 21, 0.94);
   }
 
   .Welcome-box {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background: rgba(230, 98, 119, 0.12);
+    background: rgba(99, 102, 241, 0.12);
   }
 
   .glass-card-hover:hover {
     box-shadow: none;
   }
 }
-

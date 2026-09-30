@@ -13,8 +13,9 @@ Divyesh Soni is a highly skilled Full Stack Software Engineer based in Ahmedabad
 - **AI & Cloud:** OpenAI API, Claude API, Vercel, Docker
 
 ## Key Projects
-1. **AI Chatbots & SaaS:** Specialized in building LLM-powered applications using RAG (Retrieval-Augmented Generation) and agentic workflows.
-2. **Interactive Portfolio:** A high-performance, visually stunning Next.js portfolio featuring 3D particle backgrounds, staggered Framer Motion animations, and a warm sunset & plum aesthetic (featuring Peach, Coral, Rose, Plum, and Dark Violet tones).
+1. **VIVA Meeting (WebRTC Video Conferencing):** Peer-to-peer real-time video conferencing application built with WebRTC, Socket.io, and React 19 featuring waiting rooms, screen sharing, and live captions. [Live App](https://viva-meeting-app.vercel.app/)
+2. **AI Chatbots & SaaS:** Specialized in building LLM-powered applications using RAG (Retrieval-Augmented Generation) and agentic workflows.
+3. **Interactive Portfolio:** A high-performance, visually stunning Next.js portfolio featuring 3D particle backgrounds, staggered Framer Motion animations, and a warm sunset & plum aesthetic (featuring Peach, Coral, Rose, Plum, and Dark Violet tones).
 
 ## Contact Information
 - **GitHub:** [Divyezh](https://github.com/Divyezh)

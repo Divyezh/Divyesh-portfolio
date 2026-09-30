@@ -9,25 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: "rgba(255, 255, 255, 0.15)",
-        background: "#0e070c",
+        border: "rgba(255, 255, 255, 0.12)",
+        background: "#050508",
+        surface: {
+          DEFAULT: "#0a0814",
+          subtle: "#0e0c1c",
+          elevated: "#141026",
+          border: "rgba(255, 255, 255, 0.1)",
+        },
+        vyro: {
+          bg: "#050508",
+          deep: "#090714",
+          surface: "#0e0c1f",
+          border: "rgba(255, 255, 255, 0.12)",
+          indigo: "#6366F1",
+          violet: "#818CF8",
+          royal: "#4F46E5",
+          cobalt: "#38BDF8",
+          glow: "rgba(99, 102, 241, 0.35)",
+        },
         purple: {
-          50: "#fff5f0",
-          100: "#ffe6d7",
-          200: "#FFC59E",
-          300: "#FF9F9A",
-          400: "#FF9F9A",
-          500: "#E66277",
-          600: "#AD4161",
-          700: "#8F3858",
-          800: "#562747",
-          900: "#39192f",
-          950: "#1a0e16",
-          light:  "#FFC59E",
-          mid:    "#FF9F9A",
-          core:   "#E66277",
-          deep:   "#562747",
-          glow:   "rgba(230, 98, 119, 0.15)",
+          50: "#f5f3ff",
+          100: "#ede9fe",
+          200: "#ddd6fe",
+          300: "#c4b5fd",
+          400: "#a78bfa",
+          500: "#818cf8",
+          600: "#6366f1",
+          700: "#4f46e5",
+          800: "#3730a3",
+          900: "#1e1b4b",
+          950: "#0c0a1f",
+          light:  "#c4b5fd",
+          mid:    "#818cf8",
+          core:   "#6366f1",
+          deep:   "#312e81",
+          glow:   "rgba(99, 102, 241, 0.25)",
         },
       },
       spacing: {
@@ -42,9 +59,13 @@ const config: Config = {
       },
       backgroundImage: {
         "purple-gradient":
-          "linear-gradient(90deg, #FFC59E 0%, #FF9F9A 50%, #E66277 100%)",
+          "linear-gradient(90deg, #c4b5fd 0%, #818cf8 50%, #6366f1 100%)",
         "purple-radial":
-          "radial-gradient(ellipse at center, rgba(230,98,119,0.15) 0%, transparent 70%)",
+          "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.25) 0%, transparent 70%)",
+        "vyro-radial":
+          "radial-gradient(circle at 50% 25%, rgba(99, 102, 241, 0.35) 0%, rgba(79, 70, 229, 0.15) 40%, rgba(5, 5, 8, 0) 75%)",
+        "vyro-crescent":
+          "conic-gradient(from 180deg at 50% 50%, rgba(99, 102, 241, 0.4) 0deg, rgba(129, 140, 248, 0.15) 120deg, transparent 240deg)",
       },
       keyframes: {
         shimmer: {

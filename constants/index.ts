@@ -74,6 +74,21 @@ export interface ProjectItem {
 // ─── PROJECTS ────────────────────────────────────────────
 export const Projects: ProjectItem[] = [
   {
+    id: "viva-meeting",
+    title: "VIVA Meeting",
+    category: "Full Stack",
+    description:
+      "Ultra-low latency peer-to-peer video conferencing platform built with native WebRTC, Socket.io, and React 19. Features host admission waiting rooms, HD screen sharing, real-time chat, and live subtitles.",
+    longDescription:
+      "Powered by native WebRTC mesh networking and Google STUN infrastructure with zero third-party video SDK dependencies. Includes host knock-to-enter admission controls, active speaker detection, persistent session history, and Clerk authentication.",
+    image: "/projects/viva-meeting.png",
+    link: "https://viva-meeting-app.vercel.app/",
+    github: "https://github.com/Divyezh/Viva-Meeting-app",
+    tags: ["WebRTC", "Socket.io", "React 19", "TypeScript", "Tailwind CSS", "Clerk"],
+    featured: true,
+    metrics: "Native WebRTC P2P",
+  },
+  {
     id: "velvet-ai",
     title: "VELVET.AI",
     category: "AI & SaaS",

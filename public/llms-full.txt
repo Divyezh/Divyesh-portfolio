@@ -43,7 +43,14 @@ His engineering philosophy focuses on high scalability, clean architecture, resp
 
 ## Portfolio Projects
 
-### 1. VELVET.AI (AI & SaaS)
+### 1. VIVA Meeting (Full Stack / WebRTC)
+- **Role:** Creator / Lead Full Stack Engineer
+- **Description:** Ultra-low latency peer-to-peer video conferencing platform built with native WebRTC, Socket.io, and React 19. Features host admission waiting rooms, HD screen sharing, real-time in-meeting chat, and live speech translation subtitles.
+- **Key Metrics:** 100% Free peer-to-peer WebRTC mesh network with Google STUN infrastructure (zero third-party video SDK fees) and DPDP Act 2023 compliance.
+- **Tech Stack:** WebRTC, Socket.io, React 19, TypeScript, Tailwind CSS, Clerk Auth
+- **GitHub / Live Links:** [Live App](https://viva-meeting-app.vercel.app/) • [GitHub Repository](https://github.com/Divyezh/Viva-Meeting-app)
+
+### 2. VELVET.AI (AI & SaaS)
 - **Role:** Creator / Lead Engineer
 - **Description:** An AI-powered SaaS website builder that generates production-ready web applications from natural language prompts using Anthropic's Claude. It orchestrates a multi-step prompt-chaining generation pipeline.
 - **Key Metrics:** 45% perceived latency reduction through real-time Server-Sent Events (SSE) streaming. 90%+ structural generation accuracy.

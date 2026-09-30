@@ -10,7 +10,7 @@ import SmoothScrollProvider from "@/components/sub/smooth-scroll-provider"
 export default function Home() {
   return (
     <SmoothScrollProvider>
-      <main className="min-h-screen w-full relative bg-[#0e070c] text-white selection:bg-purple-500/30 selection:text-white">
+      <main className="min-h-screen w-full relative bg-[#050508] text-white selection:bg-indigo-500/30 selection:text-white">
         <Navbar />
         <div className="flex flex-col">
           <Hero />

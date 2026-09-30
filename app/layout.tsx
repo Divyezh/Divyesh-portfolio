@@ -33,7 +33,7 @@ const cedarvilleCursive = Cedarville_Cursive({
 })
 
 export const viewport: Viewport = {
-  themeColor: "#0e070c",
+  themeColor: "#050508",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,   // Allow user zoom but prevent auto-zoom on iOS input focus
@@ -99,6 +99,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   verification: {
     google: "googled1a697e54b4ff7a7",
   },
@@ -150,7 +155,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} ${anton.variable} ${bebasNeue.variable} ${cedarvilleCursive.variable} bg-[#0e070c] overflow-x-hidden`}>
+      <body className={`${inter.className} ${anton.variable} ${bebasNeue.variable} ${cedarvilleCursive.variable} bg-[#050508] overflow-x-hidden`}>
         <ClientRoot>{children}</ClientRoot>
       </body>
     </html>

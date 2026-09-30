@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import StarsCanvas from './main/star-background'
-import WordsPreloader from './preloader/WordsPreloader'
+import PortfolioPreloader from './preloader/PortfolioPreloader'
 
 export default function ClientRoot({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
@@ -27,7 +27,7 @@ export default function ClientRoot({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      {isLoading && <WordsPreloader onComplete={() => setIsLoading(false)} />}
+      {isLoading && <PortfolioPreloader onComplete={() => setIsLoading(false)} />}
       <StarsCanvas />
       <div className="relative z-10 w-full min-h-screen overflow-x-hidden">
         {children}

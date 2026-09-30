@@ -8,7 +8,7 @@ export default function AiCareerRadar() {
   return (
     <section
       id="radar"
-      className="relative w-full min-h-[100dvh] md:min-h-screen pt-80 pb-8 md:py-28 px-3 sm:px-6 lg:px-12 overflow-hidden bg-[#0e070c] text-white flex flex-col items-center justify-end md:justify-center selection:bg-[#E66277]/30 selection:text-white z-20"
+      className="relative w-full min-h-[100dvh] md:min-h-screen pt-52 pb-10 sm:pt-64 md:py-28 px-3 sm:px-6 lg:px-12 overflow-hidden bg-[#0e070c] text-white flex flex-col items-center justify-end md:justify-center selection:bg-[#E66277]/30 selection:text-white z-20"
     >
       {/* 1. END-TO-END 2D CHARACTER BACKGROUND IMAGE COVER */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
