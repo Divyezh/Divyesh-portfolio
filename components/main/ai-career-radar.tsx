@@ -14,20 +14,22 @@ export default function AiCareerRadar() {
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         {/* Desktop / Tablet Background Image */}
         <Image
-          src="/assets/2d image.png"
+          src="/assets/2d-image.webp"
           alt="Divyesh AI Character Desktop"
           fill
-          priority
-          sizes="100vw"
+          loading="lazy"
+          sizes="(max-width: 768px) 1px, 100vw"
+          quality={80}
           className="hidden md:block object-cover object-center opacity-100 transition-all duration-700 scale-[1.02]"
         />
         {/* Mobile Background Image (9:16 Vertical Portrait) */}
         <Image
-          src="/assets/2d image mobile.png"
+          src="/assets/2d-image-mobile.webp"
           alt="Divyesh AI Character Mobile"
           fill
-          priority
-          sizes="100vw"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 1px"
+          quality={80}
           className="block md:hidden object-cover object-[center_15%] opacity-100 transition-all duration-700"
         />
 

@@ -1,6 +1,4 @@
-/* Google Fonts removed — loaded via next/font in layout.tsx (non-blocking, font-display: swap) */
-/* Geist font (Vercel) is not in next/font/google, so it's loaded here with display=swap */
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
+/* Google Fonts loaded via next/font in layout.tsx (non-blocking, font-display: swap) */
 @import "lenis/dist/lenis.css";
 @tailwind base;
 @tailwind components;
@@ -25,7 +23,6 @@ body {
 }
 
 /* Font-family helpers */
-.font-geist { font-family: var(--font-geist), system-ui, sans-serif; }
 .font-anton  { font-family: var(--font-anton), sans-serif; }
 .font-bebas  { font-family: var(--font-bebas), sans-serif; }
 
@@ -57,6 +54,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  white-space: nowrap;
   border-radius: 9999px;
   background-color: rgba(0, 0, 0, 0.9);
   color: #ffffff;
@@ -82,6 +80,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  white-space: nowrap;
   border-radius: 9999px;
   background-color: rgba(255, 255, 255, 0.05);
   color: #e2e8f0;
@@ -106,6 +105,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  white-space: nowrap;
   border-radius: 9999px;
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   color: #ffffff;

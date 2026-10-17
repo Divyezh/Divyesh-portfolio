@@ -81,7 +81,7 @@ export const Projects: ProjectItem[] = [
       "Ultra-low latency peer-to-peer video conferencing platform built with native WebRTC, Socket.io, and React 19. Features host admission waiting rooms, HD screen sharing, real-time chat, and live subtitles.",
     longDescription:
       "Powered by native WebRTC mesh networking and Google STUN infrastructure with zero third-party video SDK dependencies. Includes host knock-to-enter admission controls, active speaker detection, persistent session history, and Clerk authentication.",
-    image: "/projects/viva-meeting.png",
+    image: "/projects/viva-meeting.webp",
     link: "https://viva-meeting-app.vercel.app/",
     github: "https://github.com/Divyezh/Viva-Meeting-app",
     tags: ["WebRTC", "Socket.io", "React 19", "TypeScript", "Tailwind CSS", "Clerk"],
@@ -96,7 +96,7 @@ export const Projects: ProjectItem[] = [
       "AI-powered SaaS website builder that generates production-ready web applications from natural language prompts using Anthropic Claude. Implemented prompt-chaining with real-time SSE streaming.",
     longDescription:
       "Features a robust prompt-chaining pipeline with 90%+ structural generation accuracy, real-time Server-Sent Events (SSE) streaming reducing perceived latency by 45%, and interactive React canvas preview.",
-    image: "/projects/velvet-ai.png",
+    image: "/projects/velvet-ai.webp",
     link: "https://github.com/Divyezh",
     github: "https://github.com/Divyezh",
     tags: ["Next.js 14", "Claude API", "Prisma", "TypeScript", "SSE"],
@@ -111,7 +111,7 @@ export const Projects: ProjectItem[] = [
       "Modern healthcare management portal & patient booking system featuring doctor scheduling, OPD appointments, real-time patient queue, and department telemetry.",
     longDescription:
       "Comprehensive hospital management web application designed for seamless patient intake, specialized doctor directory (Cardiology, Neurology, etc.), digital OPD appointments, and responsive patient records portal.",
-    image: "/projects/ojas-hospital.png",
+    image: "/projects/ojas-hospital.webp",
     link: "https://www.ojashospitalmultispecility.com/",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API"],
     featured: true,
@@ -125,7 +125,7 @@ export const Projects: ProjectItem[] = [
       "Interactive musical portal & discography web experience for Arijit Singh fans, featuring dynamic audio visualizers, concert tour timeline, and curated mood playlists.",
     longDescription:
       "An immersive audio-visual platform with interactive soundscapes, song discovery, synced lyric visualization, concert tour schedules, and dark cinematic UI aesthetic.",
-    image: "/projects/arijit-world.png",
+    image: "/projects/arijit-world.webp",
     link: "https://arijit-world.vercel.app/",
     tags: ["React", "Next.js", "Web Audio API", "Framer Motion", "Tailwind"],
     featured: true,
@@ -139,7 +139,7 @@ export const Projects: ProjectItem[] = [
       "High-performance developer portfolio built with Next.js 14, Three.js, and Framer Motion, featuring interactive 3D particle systems and GPU-accelerated motion.",
     longDescription:
       "Showcases custom Three.js star fields, interactive orbiting tech nodes, responsive layout mechanics, and fluid scroll-based animations.",
-    image: "/projects/portfolio.png",
+    image: "/projects/portfolio.webp",
     link: "https://github.com/Divyezh",
     github: "https://github.com/Divyezh/Divyesh-portfolio",
     tags: ["Next.js 14", "Three.js", "Framer Motion", "Tailwind CSS"],

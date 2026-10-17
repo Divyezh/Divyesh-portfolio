@@ -80,7 +80,7 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-pill-primary flex-1 py-2 px-4 text-xs font-bold"
+            className="btn-pill-primary flex-1 py-2 px-4 text-xs font-bold whitespace-nowrap"
           >
             <span>Live Project</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -91,7 +91,7 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pill-secondary py-2 px-3.5 text-xs font-medium"
+              className="btn-pill-secondary py-2 px-3.5 text-xs font-medium whitespace-nowrap"
               aria-label={`View ${project.title} source code on GitHub`}
             >
               <FaGithub className="w-3.5 h-3.5" />

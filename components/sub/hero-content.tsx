@@ -87,16 +87,20 @@ export default function HeroContent() {
         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         className="hidden lg:flex flex-col items-start absolute left-8 sm:left-12 xl:left-20 top-1/2 -translate-y-1/2 z-20 pointer-events-none select-none"
       >
-        <div className="flex flex-col font-sans text-4xl xl:text-5xl font-extrabold tracking-tight leading-[0.98]">
-          <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">Beyond</span>
-          <span className="text-white/85">limits</span>
-          <span className="text-white/65">beyond</span>
-          <span className="text-slate-400">depth</span>
-          <span className="text-slate-500">beyond</span>
+        <div className="flex flex-col tracking-tight leading-[0.92]">
+          <span className="text-4xl xl:text-5xl font-extrabold text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] font-sans">
+            Soni
+          </span>
+          <span className="text-4xl xl:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-indigo-200 to-indigo-400 font-sans mt-0.5">
+            Divyesh
+          </span>
+          <div className="h-0.5 w-8 bg-indigo-500/60 rounded-full mt-3 mb-2" />
+          <span className="text-[10px] font-mono tracking-[0.24em] text-slate-400 uppercase">
+            Portfolio // 2026
+          </span>
         </div>
       </motion.div>
-
-      {/* ─── 3. RIGHT SUB-HEADLINE COPY (EXACT MOTIF FROM VYRO IMAGE) ─── */}
+     {/* ─── 3. RIGHT SUB-HEADLINE COPY (EXACT MOTIF FROM VYRO IMAGE) ─── */}
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
@@ -120,11 +124,14 @@ export default function HeroContent() {
         <div className="absolute w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] md:w-[460px] md:h-[460px] bg-white/20 blur-[90px] rounded-full pointer-events-none -z-10" />
 
         <Image
-          src="/assets/Divyesh.png"
+          src="/assets/Divyesh.webp"
           alt="Divyesh Soni Portrait"
           width={650}
           height={850}
           priority
+          fetchPriority="high"
+          sizes="(max-width: 640px) 280px, (max-width: 1024px) 450px, 650px"
+          quality={85}
           className="h-full w-auto max-w-full object-contain drop-shadow-[0_30px_70px_rgba(0,0,0,0.95)] filter"
         />
       </motion.div>
@@ -134,7 +141,7 @@ export default function HeroContent() {
         initial={{ opacity: 0, x: 30, y: 15 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden md:flex absolute bottom-10 right-8 lg:right-16 z-20 pointer-events-auto"
+        className="hidden md:flex absolute bottom-24 md:bottom-28 lg:bottom-32 right-6 sm:right-8 lg:right-16 z-20 pointer-events-auto"
       >
         <a
           href="#skills"
@@ -145,13 +152,13 @@ export default function HeroContent() {
             <Sparkles className="w-5 h-5 text-indigo-400" />
             <div className="absolute inset-0 bg-indigo-500/10 blur-sm" />
             {/* Pill tag matching $150 in the VYRO screenshot */}
-            <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-indigo-600 text-white text-[9px] font-mono font-bold shadow-sm">
+            <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-indigo-600 text-white text-[9px] font-mono font-bold shadow-sm whitespace-nowrap">
               NEW
             </span>
           </div>
 
           {/* Card Copy */}
-          <div className="flex flex-col">
+          <div className="flex flex-col whitespace-nowrap">
             <span className="text-[10px] font-mono text-indigo-300 uppercase tracking-widest font-semibold">
               CORE STACK
             </span>
@@ -176,19 +183,19 @@ export default function HeroContent() {
       >
         {/* Left: Featured Work / Roles */}
         <div className="flex flex-col items-start pointer-events-auto max-w-full md:max-w-[70%]">
-          <span className="text-[9.5px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+          <span className="text-[9.5px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400 whitespace-nowrap">
             TECHNICAL FOCUS
           </span>
           <div className="text-[11px] sm:text-xs md:text-sm font-bold text-white tracking-tight mt-1 flex items-center gap-1.5 sm:gap-2 flex-wrap">
-            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md whitespace-nowrap">
               Frontend Engineer
             </span>
             <span className="text-indigo-400 font-normal hidden xs:inline">•</span>
-            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md whitespace-nowrap">
               Next.js 14 &amp; React 19
             </span>
             <span className="text-indigo-400 font-normal hidden xs:inline">•</span>
-            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+            <span className="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md whitespace-nowrap">
               Generative AI Pipelines
             </span>
           </div>
@@ -196,15 +203,15 @@ export default function HeroContent() {
 
         {/* Right: Social Links (Pill Buttons) */}
         <div className="flex flex-col items-start md:items-end md:text-right pointer-events-auto shrink-0">
-          <span className="text-[9.5px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+          <span className="text-[9.5px] sm:text-xs font-mono font-semibold uppercase tracking-widest text-slate-400 whitespace-nowrap">
             SOCIAL MATRIX
           </span>
-          <div className="text-[11px] sm:text-xs md:text-sm font-bold text-white tracking-tight mt-1 flex items-center gap-2">
+          <div className="text-[11px] sm:text-xs md:text-sm font-bold text-white tracking-tight mt-1 flex items-center gap-2 whitespace-nowrap">
             <a
               href="https://github.com/Divyezh"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-400/40 hover:text-white transition-all shadow-sm"
+              className="px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-400/40 hover:text-white transition-all shadow-sm whitespace-nowrap"
             >
               GitHub
             </a>
@@ -213,7 +220,7 @@ export default function HeroContent() {
               href="https://www.linkedin.com/in/divyesh-soni-60a5bb2a6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-400/40 hover:text-white transition-all shadow-sm"
+              className="px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-400/40 hover:text-white transition-all shadow-sm whitespace-nowrap"
             >
               LinkedIn
             </a>

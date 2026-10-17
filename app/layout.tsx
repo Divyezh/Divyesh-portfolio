@@ -1,3 +1,4 @@
+
 import type { Metadata, Viewport } from "next"
 import { Inter, Anton, Bebas_Neue, Cedarville_Cursive } from "next/font/google"
 import "./globals.css"
@@ -101,7 +102,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
   verification: {
@@ -151,6 +151,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="overflow-x-hidden">
       <head>
         <script
+          key="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

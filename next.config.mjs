@@ -17,6 +17,17 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],  // Modern image formats
     minimumCacheTTL: 86400,                 // 24h image cache
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'react-icons',
+      'framer-motion',
+      '@heroicons/react',
+    ],
+  },
   transpilePackages: ['three', 'lenis'],
   webpack: (config) => {
     config.module.rules.push({
@@ -35,6 +46,9 @@ const nextConfig = {
       /LayoutGroupContext/,
       /\.mjs\.map$/,
       /PackFileCacheStrategy/,
+      { module: /next[\\/]dist[\\/]server/ },
+      { message: /PackFileCacheStrategy/ },
+      { message: /Resolving.*for build dependencies/ },
     ];
     return config;
   },

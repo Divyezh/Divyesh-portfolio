@@ -209,7 +209,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="w-full mt-4 md:mt-8 -mb-3 sm:-mb-5 md:-mb-7 flex justify-center items-end relative overflow-visible">
+        <div className="w-full my-4 sm:my-6 flex justify-center items-center relative overflow-hidden">
           <DivyeshCustomWord className="w-full" />
         </div>
 
