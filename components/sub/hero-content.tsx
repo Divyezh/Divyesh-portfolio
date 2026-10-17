@@ -115,9 +115,9 @@ export default function HeroContent() {
       {/* ─── 4. CENTER FOREGROUND PORTRAIT (ILLUMINATED BY STUDIO BACKLIGHT) ─── */}
       <motion.div
         style={{ y: yPortrait, scale: scalePortrait }}
-        initial={{ opacity: 0, y: 35, scale: 0.97 }}
+        initial={{ opacity: 1, y: 0, scale: 1 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 flex items-center justify-center h-[50vh] sm:h-[65vh] md:h-[76vh] max-h-[760px] max-w-full my-auto"
       >
         {/* Soft radial white & lavender halo directly backlighting portrait */}
@@ -126,12 +126,12 @@ export default function HeroContent() {
         <Image
           src="/assets/Divyesh.webp"
           alt="Divyesh Soni Portrait"
-          width={650}
-          height={850}
+          width={600}
+          height={800}
           priority
           fetchPriority="high"
-          sizes="(max-width: 640px) 280px, (max-width: 1024px) 450px, 650px"
-          quality={85}
+          sizes="(max-width: 640px) 260px, (max-width: 1024px) 450px, 600px"
+          quality={75}
           className="h-full w-auto max-w-full object-contain drop-shadow-[0_30px_70px_rgba(0,0,0,0.95)] filter"
         />
       </motion.div>

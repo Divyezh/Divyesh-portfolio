@@ -150,6 +150,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="overflow-x-hidden">
       <head>
+        <link rel="preload" as="image" href="/assets/Divyesh.webp" fetchPriority="high" />
         <script
           key="json-ld"
           type="application/ld+json"

@@ -41,12 +41,10 @@ export default function Hero() {
               <stop offset="50%" stopColor="#6366F1" stopOpacity="0.7" />
               <stop offset="100%" stopColor="#A855F7" stopOpacity="0.85" />
             </linearGradient>
-            <filter id="crescentGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="8" result="blur1" />
-              <feGaussianBlur stdDeviation="24" result="blur2" />
+            <filter id="crescentGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="12" result="blur" />
               <feMerge>
-                <feMergeNode in="blur2" />
-                <feMergeNode in="blur1" />
+                <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
