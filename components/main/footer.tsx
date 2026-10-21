@@ -47,7 +47,7 @@ export default function Footer() {
     <footer
       id="contact"
       ref={containerRef}
-      className="relative w-full text-white mt-16 sm:mt-24 md:mt-36 px-2.5 sm:px-6 md:px-10 pb-8 md:pb-12 overflow-hidden z-20"
+      className="relative w-full text-white mt-16 sm:mt-24 md:mt-36 px-2.5 sm:px-6 md:px-10 pb-8 md:pb-12 overflow-hidden z-20 content-visibility-auto"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[1000px] h-[350px] bg-indigo-600/15 blur-[150px] pointer-events-none -z-10" />

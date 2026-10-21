@@ -30,7 +30,7 @@ export default function CollaborateSection() {
     <section 
       ref={sectionRef}
       id="collaborate" 
-      className="relative w-full min-h-[650px] sm:min-h-screen bg-[#050508] text-white flex flex-col justify-between items-center overflow-hidden py-8 px-4 sm:px-8 select-none"
+      className="relative w-full min-h-[650px] sm:min-h-screen bg-[#050508] text-white flex flex-col justify-between items-center overflow-hidden py-8 px-4 sm:px-8 select-none content-visibility-auto"
     >
       {/* ── 3D X STAGE CONTAINER (UNIFIED COORDINATE SPACE FOR SVG & CENTER CIRCLE) ── */}
       <div className="relative w-full max-w-7xl h-[440px] sm:h-[540px] md:h-[600px] my-auto flex items-center justify-center">

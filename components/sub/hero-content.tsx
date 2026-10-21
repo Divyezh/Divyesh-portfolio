@@ -130,9 +130,9 @@ export default function HeroContent() {
           height={800}
           priority
           fetchPriority="high"
+          unoptimized
           sizes="(max-width: 640px) 260px, (max-width: 1024px) 450px, 600px"
-          quality={75}
-          className="h-full w-auto max-w-full object-contain drop-shadow-[0_30px_70px_rgba(0,0,0,0.95)] filter"
+          className="h-full w-auto max-w-full object-contain drop-shadow-[0_30px_70px_rgba(0,0,0,0.95)]"
         />
       </motion.div>
 

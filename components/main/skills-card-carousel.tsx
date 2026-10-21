@@ -331,7 +331,9 @@ export default function SkillsCardCarousel() {
     return SKILL_CARDS.map((card, i) => (card.category === selectedCategory ? i : -1)).filter(i => i !== -1)
   }, [selectedCategory])
 
-  // Measure container width
+  const [isInView, setIsInView] = useState(false)
+
+  // Measure container width & observe viewport visibility
   useEffect(() => {
     if (!containerRef.current) return
     const updateSize = () => {
@@ -342,12 +344,29 @@ export default function SkillsCardCarousel() {
     updateSize()
     const resizeObserver = new ResizeObserver(updateSize)
     resizeObserver.observe(containerRef.current)
-    return () => resizeObserver.disconnect()
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting)
+      },
+      { rootMargin: '200px' }
+    )
+    observer.observe(containerRef.current)
+
+    return () => {
+      resizeObserver.disconnect()
+      observer.disconnect()
+    }
   }, [])
 
   // Continuous animation loop (right-to-left smooth movement + drag momentum)
+  // PAUSED when not in view to reduce TBT and save 100% CPU on initial page load
   useEffect(() => {
+    if (!isInView) return
+
     let lastTime = performance.now()
+    const cardNodes = containerRef.current?.querySelectorAll<HTMLElement>('.skill-card-node')
+    const dialNode = containerRef.current?.querySelector<HTMLElement>('#rotary-dial')
 
     const loop = (currentTime: number) => {
       const dt = Math.min((currentTime - lastTime) / 1000, 0.1) // clamp dt to avoid huge jumps
@@ -409,10 +428,7 @@ export default function SkillsCardCarousel() {
       setActiveCardIndex(prev => (prev !== nearestIndex ? nearestIndex : prev))
 
       // Direct DOM transformation for silky 60fps/120fps hardware acceleration
-      if (containerRef.current) {
-        const cardNodes = containerRef.current.querySelectorAll<HTMLElement>('.skill-card-node')
-        const dialNode = containerRef.current.querySelector<HTMLElement>('#rotary-dial')
-
+      if (cardNodes && cardNodes.length > 0) {
         cardNodes.forEach(card => {
           const originalIndex = parseInt(card.dataset.index || '0', 10)
           // Compute screen position relative to viewport center
@@ -460,7 +476,7 @@ export default function SkillsCardCarousel() {
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current)
     }
-  }, [containerWidth, count, stride, totalWidth, isPlaying, isHovered, isReducedMotion, baseSpeed])
+  }, [isInView, containerWidth, count, stride, totalWidth, isPlaying, isHovered, isReducedMotion, baseSpeed])
 
   // Mouse hover handlers: only active on pointer/mouse devices, never sticky on touchscreens
   const handleMouseEnter = () => {

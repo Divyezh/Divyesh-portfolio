@@ -37,7 +37,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative flex flex-col items-center justify-center pt-16 sm:pt-24 pb-20 sm:pb-28 px-3 sm:px-4 md:px-8 max-w-7xl mx-auto w-full z-20 overflow-hidden"
+      className="relative flex flex-col items-center justify-center pt-16 sm:pt-24 pb-20 sm:pb-28 px-3 sm:px-4 md:px-8 max-w-7xl mx-auto w-full z-20 overflow-hidden content-visibility-auto"
     >
       {/* Background ambient studio lighting (VYRO deep indigo / royal violet) */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] bg-indigo-600/15 blur-[170px] rounded-full pointer-events-none -z-10" />

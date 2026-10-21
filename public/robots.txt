@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://divyesh-portfolio-phi.vercel.app/sitemap.xml
+Host: https://divyesh-portfolio-phi.vercel.app

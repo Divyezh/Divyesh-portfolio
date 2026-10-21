@@ -16,7 +16,7 @@ export default function ProjectsSection() {
     : Projects.filter(p => p.category === selectedCategory)
 
   return (
-    <section id="projects" className="relative py-16 sm:py-24 px-3 sm:px-6 md:px-8 max-w-7xl mx-auto w-full z-20">
+    <section id="projects" className="relative py-16 sm:py-24 px-3 sm:px-6 md:px-8 max-w-7xl mx-auto w-full z-20 content-visibility-auto">
       {/* SECTION HEADER */}
       <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
         <motion.div

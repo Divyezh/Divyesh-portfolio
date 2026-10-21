@@ -9,7 +9,7 @@ export default function AiCareerRadar() {
   return (
     <section
       id="radar"
-      className="relative w-full min-h-[100dvh] md:min-h-screen py-16 sm:py-24 md:py-28 px-3 sm:px-6 lg:px-12 overflow-hidden bg-[#0e070c] text-white flex flex-col items-center justify-center selection:bg-[#E66277]/30 selection:text-white z-20"
+      className="relative w-full min-h-[100dvh] md:min-h-screen py-16 sm:py-24 md:py-28 px-3 sm:px-6 lg:px-12 overflow-hidden bg-[#0e070c] text-white flex flex-col items-center justify-center selection:bg-[#E66277]/30 selection:text-white z-20 content-visibility-auto"
     >
       {/* ─── 1. CLEAN SCI-FI AMBIENT BACKGROUND ─── */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -84,7 +84,8 @@ export default function AiCareerRadar() {
                   alt="Divyesh Soni Holographic Avatar"
                   width={600}
                   height={800}
-                  priority
+                  loading="lazy"
+                  sizes="(max-width: 640px) 280px, 460px"
                   className="h-full w-auto object-contain filter contrast-110 drop-shadow-[0_0_35px_rgba(230,98,119,0.4)] select-none pointer-events-none"
                 />
 
